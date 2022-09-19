@@ -175,18 +175,22 @@
 
 
 \begin{problem}[3.15]
-Since
+The energy of the system is
 \begin{align*}
-    \frac{(\Delta p)^2}{2m} = c(\Delta x)^4\\
-    \Delta p\Delta x\geq \frac{\hbar}{2}
+    E = T + V = \frac{p^2}{2m} + cx^4
 \end{align*}
-Then
+Substitute $p$ by $px = \hbar/2$
 \begin{align*}
-    \Delta x \geq \left(\frac{\hbar^2}{8mc}\right)^{1/6}
+    E = \frac{\hbar^2}{8mx^2} + cx^4
 \end{align*}
-and
+Find the minimum of $E$ by letting $\d E/\d x=0$
 \begin{align*}
-    E_0\approx c\left(\frac{\hbar^2}{8mc}\right)^{4/6}
+    \frac{\d E}{\d x} = 4cx^3 - \frac{\hbar^2}{4mx^3} = 0\Rightarrow
+    x_0=\left(\frac{\hbar^2}{16mc}\right)^{1/6}
+\end{align*}
+Then the ground state energy is approximately equals to 
+\begin{align*}
+    E_0 = cx_0^4 = c\left(\frac{\hbar^2}{16mc}\right)^{4/6}
 \end{align*}
 \end{problem}
 
