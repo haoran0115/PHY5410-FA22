@@ -184,6 +184,10 @@ Then
 \begin{align*}
     \Delta x \geq \left(\frac{\hbar^2}{8mc}\right)^{1/6}
 \end{align*}
+and
+\begin{align*}
+    E_0\approx c\left(\frac{\hbar^2}{8mc}\right)^{4/6}
+\end{align*}
 \end{problem}
 
 
@@ -204,11 +208,11 @@ Then
     $L_i = L_i^\dagger$
 \end{claim}
 \begin{proof}
-    Using the fact $[x_i,p_j]=i\hbar\delta_{ij}$
+    Using the fact $[x_i,p_j]=i\hbar\delta_{ij}$ ($x_i$, $p_j$ commute when $i\neq j$)
     \begin{align*}
         L_i^\dag &= [\epsilon_{ijk}(x_jp_k - x_kp_j)]^\dag\\
         &= \epsilon_{ijk}(p_k^\dag x_j^\dag - p_j^\dag x_k^\dag)\\
-        &= \epsilon_{ijk}(p_k^\dag x_j^\dag - p_j^\dag x_k^\dag)\\
+        &= \epsilon_{ijk}(p_k x_j - p_j x_k)\\
         &= \epsilon_{ijk}(x_jp_k - x_kp_j) = L_i\qedhere
     \end{align*}
 \end{proof}
@@ -231,7 +235,7 @@ By the claims above, we can derive that
     \Leftrightarrow \ket{L_i\psi} = \ket{0}\Rightarrow
     \braket{\psi|L_i\psi} = 0
 \end{align*}
-note that we can derive $\ket{L_i\psi}=0$ 
+note that we can derive $\ket{L_i\psi}=\ket{0}$ 
 if $\ket{L_i\psi}$ is indeed a continuous function under any
 representations.
 
