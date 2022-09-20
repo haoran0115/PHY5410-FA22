@@ -188,7 +188,7 @@
         \braket{p} &= \braket{\varphi|p \varphi} = \frac{1}{2\pi\hbar}\int\d p\ pg^2(p) = p_0\\
         \braket{p^2} &= \braket{\varphi|p^2\varphi} = \frac{1}{2\pi\hbar}\int\d p\ p^2g^2(p)
     \end{align*}
-    Using the fact that $x(p) = ih\d/\d p$, we have
+    Using the fact that $x = ih\d/\d p$ under momentum representation, we have
     \begin{align*}
         x\varphi(p, t) &= \frac{1}{\sqrt{2\pi\hbar}} g(p)(E'(p)t - \alpha'(p)\hbar)
         e^{-iE(t)/\hbar + i\alpha(p)} + \frac{1}{\sqrt{2\pi\hbar}}i\hbar g'(p)e^{-iE(t)/\hbar + i\alpha(p)}
@@ -208,8 +208,8 @@
     For $x^2$ (ignoring $g(p)g'(p)$ term)
     \begin{align*}
         \braket{x^2} &= \braket{x\varphi|x\varphi}\\
-        &= \frac{1}{2\pi\hbar}\int\d p\ \hbar^2 {g'}^2(p) + [E'(p)t-\alpha(p)]^2 g^2(p)\\
-        &= \braket{[E'(p)t-\alpha'(p)]^2} + \frac{1}{2\pi\hbar}\int\d p\ 
+        &= \frac{1}{2\pi\hbar}\int\d p\ \hbar^2 {g'}^2(p) + [E'(p)t-\alpha(p)\hbar]^2 g^2(p)\\
+        &= \braket{[E'(p)t-\alpha'(p)\hbar]^2} + \frac{1}{2\pi\hbar}\int\d p\ 
         \hbar^2 {g'}^2(p)
     \end{align*}
     Plugin a gaussian wave packet with $\sigma_p=\Delta p$, i.e.
@@ -283,10 +283,8 @@ Then the ground state energy approximately equals to
 \begin{proof}
     Using the fact $[x_i,p_j]=i\hbar\delta_{ij}$ ($x_i$, $p_j$ commute when $i\neq j$)
     \begin{align*}
-        L_i^\dag &= [\epsilon_{ijk}(x_jp_k - x_kp_j)]^\dag\\
-        &= \epsilon_{ijk}(p_k^\dag x_j^\dag - p_j^\dag x_k^\dag)\\
-        &= \epsilon_{ijk}(p_k x_j - p_j x_k)\\
-        &= \epsilon_{ijk}(x_jp_k - x_kp_j) = L_i\qedhere
+        L_i^\dag &= \epsilon_{ijk}p_k^\dag x_j^\dag = 
+        \epsilon_{ijk}p_kx_j = \epsilon_{ijk} x_jp_k = L_i\qedhere
     \end{align*}
 \end{proof}
 \begin{claim}
