@@ -95,7 +95,7 @@
 \setlength\parskip{0.5em}
 
 \newcommand\Code{PHY5410 FA22}
-\newcommand\Ass{HW\#02}
+\newcommand\Ass{HW02}
 \newcommand\name{Haoran Sun}
 \newcommand\mail{haoransun@link.cuhk.edu.cn}
 
@@ -171,6 +171,71 @@
 % \end{remark}
 
 \begin{problem}[3.10]
+    The wavefunction under the momentum representation would be 
+    \begin{align*}
+        \varphi(p, t) &= \frac{1}{\sqrt{2\pi\hbar}}\int\d x\ \psi(x, t)e^{-ipx/\hbar}\\
+        &= \frac{1}{\sqrt{2\pi\hbar}}\frac{1}{2\pi\hbar}
+        \iint\d x\d p'\ g(p') e^{ix(p-p')/\hbar}e^{-iE(p')t/\hbar}e^{i\alpha(p')}\\
+        &= \frac{1}{\sqrt{2\pi\hbar}}\int\d p'\ g(p')e^{-iE(p')t/\hbar}e^{i\alpha(p')}\delta(p-p')\\
+        &= \frac{1}{\sqrt{2\pi\hbar}} g(p)e^{-iE(p)t/\hbar}e^{i\alpha(p)}
+    \end{align*}
+    and
+    \begin{align*}
+        |\varphi(p, t)|^2 &= \frac{1}{2\pi\hbar}g^2(p)
+    \end{align*}
+    Therefore
+    \begin{align*}
+        \braket{p} &= \braket{\varphi|p \varphi} = \frac{1}{2\pi\hbar}\int\d p\ pg^2(p) = p_0\\
+        \braket{p^2} &= \braket{\varphi|p^2\varphi} = \frac{1}{2\pi\hbar}\int\d p\ p^2g^2(p)
+    \end{align*}
+    Using the fact that $x(p) = ih\d/\d p$, we have
+    \begin{align*}
+        x\varphi(p, t) &= \frac{1}{\sqrt{2\pi\hbar}} g(p)(E'(p)t - \alpha'(p)\hbar)
+        e^{-iE(t)/\hbar + i\alpha(p)} + \frac{1}{\sqrt{2\pi\hbar}}i\hbar g'(p)e^{-iE(t)/\hbar + i\alpha(p)}
+    \end{align*}
+    Thus
+    \begin{align*}
+        \braket{x} &= \braket{\varphi|x\varphi} \\
+        &= \frac{1}{2\pi\hbar}\int\d p\
+        [E'(p)-\alpha'(p)\hbar] g^2(p) + i\hbar g(p)g'(p)\\
+        &= \frac{1}{2\pi\hbar}\int\d p\ [E'(p)-\alpha'(p)\hbar] g^2(p)\\
+        &= \braket{E'(p)t-\alpha'(p)\hbar}
+    \end{align*}
+    note that the term $g(p)g'(p)$ vanishes under integration due to the boundary condition.
+    \begin{align*}
+        \int\d p\ g(p)g'(p) = \left. \frac{1}{2}g^2(p)\right |_\Omega = 0
+    \end{align*}
+    For $x^2$ (ignoring $g(p)g'(p)$ term)
+    \begin{align*}
+        \braket{x^2} &= \braket{x\varphi|x\varphi}\\
+        &= \frac{1}{2\pi\hbar}\int\d p\ \hbar^2 {g'}^2(p) + [E'(p)t-\alpha(p)]^2 g^2(p)\\
+        &= \braket{[E'(p)t-\alpha'(p)]^2} + \frac{1}{2\pi\hbar}\int\d p\ 
+        \hbar^2 {g'}^2(p)
+    \end{align*}
+    Plugin a gaussian wave packet with $\sigma_p=\Delta p$, i.e.
+    \begin{align*}
+        g(p) &= Ae^{\frac{-(p-p_0)^2}{4\Delta p^2}}\\
+        E(p) &= \frac{p^2}{2m}\\
+        \alpha(p) &= 0
+    \end{align*}
+    we have
+    \begin{align*}
+        \braket{p} &= p_0\\
+        \braket{p^2} &= \Delta p^2 + p_0^2\\
+        \braket{x} &= \braket{pt/m} = \frac{t}{m}\braket{p} = \frac{p_0t}{m}\\
+        \braket{x^2} &= \braket{p^2t^2/m^2} +
+        \braket{\hbar^2\left(\frac{p-p_0}{2\Delta p^2}\right)^2}\\
+        &= \frac{t^2}{m^2}\braket{p^2} + \frac{\hbar^2}{4\Delta p^4}\braket{(p-p_0)^2}\\
+        &= \frac{t^2}{m^2}(p_0^2 + \Delta p^2) + \frac{\hbar^2}{4\Delta p^2}
+    \end{align*}
+    In this manner, we have
+    \begin{align*}
+        \Delta x &= \sqrt{\frac{t^2}{m^2}\Delta p^2 + \frac{\hbar^2}{4\Delta p^2}}
+        = \frac{\hbar}{2\Delta p}\sqrt{1 + \frac{4t^2\Delta p^4}{m^2\hbar^2}}\\
+        \Rightarrow
+        \Delta x\Delta p &= 
+        \frac{\hbar}{2}\sqrt{1 + \frac{4t^2\Delta p^4}{m^2\hbar^2}}\geq \frac{\hbar}{2}
+    \end{align*}
 \end{problem}
 
 
