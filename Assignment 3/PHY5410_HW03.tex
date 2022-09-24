@@ -1,0 +1,326 @@
+\documentclass[twoside,11pt]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{sectsty}
+\usepackage{mathrsfs} % mathscr
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{listings}
+% \usepackage{amsart}
+\usepackage{fontspec}
+
+
+% allow H option of figure
+\usepackage{float}
+
+% math font (libertine)
+\usepackage{libertinus-otf}
+
+% braket
+\usepackage{braket}
+
+% define latin modern font environment
+\newcommand{\lms}{\fontfamily{lmss}\selectfont} % Latin Modern Roman
+% \newcommand{\lmss}{\fontfamily{lmss}\selectfont} % Latin Modern Sans
+% \newcommand{\lmss}{\fontfamily{lmtt}\selectfont} % Latin Modern Mono
+
+% % change mathcal shape
+% \usepackage[mathcal]{eucal}
+
+
+% define math operators
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\X}{\mathbb{Y}}
+\renewcommand{\L}{\mathcal{L}}
+% \renewcommand{\d}{\mathrm{d}}
+\renewcommand*\d{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+
+% section font style
+\sectionfont{\sffamily\Large}
+\subsectionfont{\sffamily\normalsize}
+\subsubsectionfont{\bf}
+
+% line spreading and break
+\hyphenpenalty=5000
+\tolerance=20
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+\allowdisplaybreaks
+\linespread{0.9}
+
+% theorem
+% latex theorem
+% definition style
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{exercise*}{Exercise}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{problem}{Problem}
+% remark style
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem*{claim}{Claim}
+
+
+% paragraph indent
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+
+\newcommand\Code{PHY5410 FA22}
+\newcommand\Ass{HW03}
+\newcommand\name{Haoran Sun}
+\newcommand\mail{haoransun@link.cuhk.edu.cn}
+
+\title{{\lms \Code \ \Ass}}
+\author{\lms \name \ (\href{mailto:\mail}{\mail})}
+\date{\sffamily \today}
+
+\makeatletter
+% \let\Title\@title
+\let\theauthor\@author
+\let\thedate\@date
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\sffamily \Ass}
+    \rhead{\sffamily \name}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancypagestyle{title}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    % \lhead{\Title}
+    % \rhead{\theauthor}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancyfootoffset[L]{0.3cm}
+
+% re-define title format
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\Large\@title}
+
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+\pagestyle{plain}
+
+% lstlisting settings
+\lstset{
+    basicstyle=\linespread{0.7}\footnotesize,
+    breaklines=true,
+    basewidth=0.5em
+}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{title}
+% \begin{multicols*}{2}
+
+% \begin{remark}
+%     $V_\epsilon(x)$ is used to denote a $\epsilon$-neighborhood
+%     \begin{align*}
+%         V_\epsilon(x) = B_\epsilon(x)\setminus\{x\}
+%     \end{align*}
+% \end{remark}
+
+\begin{problem}[5.1]\
+\begin{enumerate}[label=(\alph*)]
+    \item We can show that $\braket{L_x}=0$ algebraically.
+    Similarly, we can also show that $\braket{L_y}=0$.
+    Then, $L_{\pm}$ vanish automatically since $L_{\pm} = L_x \pm i L_y$.
+    \begin{align*}
+        i\hbar\braket{Y_{l,l}|L_xY_{l,l}}
+        &= \braket{Y_{l,l}|[L_y, L_z]Y_{l,l}}
+        = \braket{Y_{l,l}|(L_yL_z-L_zL_y)Y_{l,l}} \\
+        &= l\braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}
+        = l\braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}\\
+        &= l\braket{Y_{l,l}|L_yY_{l,l}} - \braket{L_yL_zY_{l,l}|Y_{l,l}}
+        = l\braket{Y_{l,l}|L_yY_{l,l}} - l\braket{Y_{l,l}|L_yY_{l,l}}\\
+        &= 0\Rightarrow \braket{L_x}=0
+    \end{align*}
+
+    \item By (a) we know that $\braket{L_x} = \braket{L_y}=0$, then $\Delta L_x^2 = \braket{L_x^2}$ 
+    and $\Delta L_y^2 = \braket{L_y^2}$.
+    Using the fact that $\braket{L_z^2} = l^2\hbar^2$, we can derive that
+    $\Delta L_x^2 + \Delta L_y^2=l\hbar^2$.
+    \begin{align*}
+        \mathbf{L}^2 &= L_x^2 + L_y^2 + L_z^2\\
+        \Rightarrow
+        \braket{\mathbf{L}^2} &= \braket{L_x^2} + \braket{L_y^2} + \braket{L_z^2} = l(l+1)\hbar^2  \\
+        \Rightarrow l\hbar^2 &= \Delta L_x^2 + \Delta L_y^2
+    \end{align*}
+    Also, according to the uncertainty relationship $\Delta A\Delta B\geq |\braket{[A,B]}|/2$, we have
+    \begin{align*}
+        \Delta L_x\Delta L_y \geq \frac{1}{2} \braket{i\hbar L_z} = \frac{1}{2}\hbar^2l
+    \end{align*}
+    Note that the following set of equations could only have a unique solution
+    $\Delta L_x=\Delta L_y=\hbar\sqrt{l/2}$.
+    Apparently, in the state $Y_{l,l}$, we have $\Delta L_z = 0$.
+    \begin{align*}
+        \begin{cases}
+            \Delta L_x^2 + \Delta L_y^2 = l\hbar^2\\
+            \Delta L_x\Delta L_y \geq \hbar^2 l/2
+        \end{cases}
+    \end{align*}
+
+    \item From (b) we know that $\Delta L_x^2 + \Delta L_y^2 = \hbar^2l(l-1) - \hbar^2m^2$.
+    Hence the expression $\Delta L_x^2 + \Delta L_y^2$ takes its minimum when $m^2$ takes
+    its maximum, i.e., $m=\pm l$.
+
+
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}[5.6]\
+    \begin{enumerate}[label=(\alph*)]
+        \item If we write $Y_{1,1}$ under the cartesian coordinate, we would get
+        \begin{align*}
+            Y_{1,1} = Y_{1,1}(x,y,z),\
+            L_z Y_{1, 1}(x, y, z) = \hbar^2 Y_{1, 1}(x, y, z)
+        \end{align*}
+        Suppose we perform a rotational transformation $(x, y, z)\rightarrow(-z, y, x)$, 
+        then $Y_{1, 1}(-z, y, x)$ would directly be the eigenfunction of $L_z$ with eigenvalue
+        $\hbar^2l$.
+        Since $\mathbf{L}^2$ is rotational invariant, we still have $\mathbf{L}^2Y_{11}(-z, y, x) =\hbar^2l(l+1)
+        Y_{11}(-z, y, x)$.
+        \begin{align*}
+            L_xY_{1, 1}(-z, y, x) 
+            &= (yp_z - zp_y) Y_{1,1}(-z, y, x)
+            = [(-z)p_y - yp_{(-z)}] Y_{1,1}(-z,y,x)\\
+            &= [x'p_y'  - y' p_{x'}] Y_{1,1}(x',y',x)
+            = \hbar^2l Y_{1,1}(x', y', x)\\
+            &= \hbar^2 l Y_{1,1}(-z, y, x)
+        \end{align*}
+        
+        \item Using the algebraic properties of angular momentum to solve this problem.
+        \begin{remark}
+            For convenience, I would like to drop all $\hbar$ terms in the equation, i.e.
+            I would written $L_z Y_{1,1} = Y_{1,1}$ instead of $L_z Y_{1,1}=\hbar^2 Y_{1,1}$.
+            For notations, let $X_{1,1}$ denote the eigenfunction of $L_x$ with
+            $L_x X_{1,1} = X_{1,1}$ and $\mathbf{L}^2 X_{1,1} = 2 X_{1,1}$.
+        \end{remark}
+        Represent the angular momentum operator under the matrix algebra: 
+        let $Y\in\R^n$ and $L_x, L_y, L_z\in\R^{n\times n}$.
+        \begin{align*}
+            aY_{1,-1} + bY_{1,0} + cY_{0,1}\mapsto \begin{bmatrix}
+                a\\ b\\ c
+            \end{bmatrix}
+        \end{align*}
+        According to the expression of ladder operator $L_+=L_x+iL_y$ and 
+        $L_-=L_x-iL_y$, we have
+        \begin{align*}
+            L_+ &= L_x + i L_y = \sqrt{2}\begin{bmatrix}
+                0 & 0 & 0 \\
+                1 & 0 & 0 \\
+                0 & 1 & 0
+            \end{bmatrix}\\
+            L_- &= L_x - i L_y = \sqrt{2}\begin{bmatrix}
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                0 & 0 & 0
+            \end{bmatrix}
+        \end{align*}
+        where the $\sqrt{2}$ term comes from the normalization rule.
+        Therefore we can solve $L_x$ and $L_y$ accordingly.
+        \begin{align*}
+            L_x = \frac{1}{\sqrt{2}}\begin{bmatrix}
+                0 & 1 & 0\\
+                1 & 0 & 1\\
+                0 & 1 & 0
+            \end{bmatrix}, 
+            L_y = \frac{1}{\sqrt{2}}\begin{bmatrix}
+                0 & i & 0\\
+                -i & 0 & i\\
+                0 & -i & 0
+            \end{bmatrix}
+        \end{align*}
+        By some calculations, we can show that the characteristic equation of
+        $L_x$ is $\lambda^3 - \lambda=0$, which means $L_x$ have three distinct
+        eigenvalues $-1$, $0$, and $1$.
+        Then, the eigenvector corresponding to $\lambda=1$ could be explicitly determined by
+        finding $\ker (L_x - I)$. Due to the normalization condition, the vector would
+        be $v_1 = \begin{bmatrix} 1/2 & 1/\sqrt{2} & 1/2\end{bmatrix}^T$.
+        \begin{align*}
+            v_1&\in\ker (L_x-I) = \ker\begin{bmatrix}
+                -1 & 1/\sqrt{2} & 0\\
+                1/\sqrt{2} & -1 & 1/\sqrt{2}\\
+                0 & 1/\sqrt{2} & -1
+            \end{bmatrix}  \text{ and } \|v_1\| = 1
+            \Rightarrow v_1 = \begin{bmatrix}
+                1/2 \\ 1/\sqrt{2} \\ 1/2
+            \end{bmatrix}
+        \end{align*}
+        Therefore $X_{1,1} = Y_{1,-1}/2 + Y_{1,0}/\sqrt{2} + Y_{1,1}/2$ is a normalized eigenfunction
+        of $L_x$ with $L_x X_{1,1} = \hbar^2 X_{1,1}$.
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}[6.2]\
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+
+
+        \item 
+
+    \end{enumerate}
+\end{problem}
+
+
+
+
+
+
+
+
+% \end{multicols*}
+\end{document}
+
