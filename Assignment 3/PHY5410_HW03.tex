@@ -39,13 +39,13 @@
 
 
 % define math operators
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\X}{\mathbb{Y}}
-\renewcommand{\L}{\mathcal{L}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\XX}{\mathbb{Y}}
+\newcommand{\CL}{\mathcal{L}}
 % \renewcommand{\d}{\mathrm{d}}
 \renewcommand*\d{\mathop{}\!\mathrm{d}}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -188,7 +188,7 @@
 
     \item By (a) we know that $\braket{L_x} = \braket{L_y}=0$, then $\Delta L_x^2 = \braket{L_x^2}$ 
     and $\Delta L_y^2 = \braket{L_y^2}$.
-    Using the fact that $\braket{L_z^2} = l^2\hbar^2$, we can derive that
+    Using the fact that $\braket{L_z^2} = l^2\hbar^2$ and $\braket{\mathbf{L}^2}=(l^2+l)\hbar^2$, we can derive that
     $\Delta L_x^2 + \Delta L_y^2=l\hbar^2$.
     \begin{align*}
         \mathbf{L}^2 &= L_x^2 + L_y^2 + L_z^2\\
@@ -248,7 +248,7 @@
             $L_x X_{1,1} = X_{1,1}$ and $\mathbf{L}^2 X_{1,1} = 2 X_{1,1}$.
         \end{remark}
         Represent the angular momentum operator under the matrix algebra: 
-        let $Y\in\R^n$ and $L_x, L_y, L_z\in\R^{n\times n}$.
+        let $Y\in\RR^n$ and $L_x, L_y, L_z\in\RR^{n\times n}$.
         \begin{align*}
             aY_{1,-1} + bY_{1,0} + cY_{0,1}\mapsto \begin{bmatrix}
                 a\\ b\\ c
@@ -286,7 +286,7 @@
         $L_x$ is $\lambda^3 - \lambda=0$, which means $L_x$ have three distinct
         eigenvalues $-1$, $0$, and $1$.
         Then, the eigenvector corresponding to $\lambda=1$ could be explicitly determined by
-        finding $\ker (L_x - I)$. Due to the normalization condition, the vector would
+        finding $\ker (L_x - I)$. Due to the normalization condition, the vector can
         be $v_1 = \begin{bmatrix} 1/2 & 1/\sqrt{2} & 1/2\end{bmatrix}^T$.
         \begin{align*}
             v_1&\in\ker (L_x-I) = \ker\begin{bmatrix}
@@ -296,7 +296,7 @@
             \end{bmatrix}  \text{ and } \|v_1\| = 1
             \Rightarrow v_1 = \begin{bmatrix}
                 1/2 \\ 1/\sqrt{2} \\ 1/2
-            \end{bmatrix}
+            \end{bmatrix} \text{ a solution}
         \end{align*}
         Therefore $X_{1,1} = Y_{1,-1}/2 + Y_{1,0}/\sqrt{2} + Y_{1,1}/2$ is a normalized eigenfunction
         of $L_x$ with $L_x X_{1,1} = \hbar^2 X_{1,1}$.
@@ -304,12 +304,75 @@
 \end{problem}
 
 
-\begin{problem}[6.2]\
+\begin{problem}[6.2]
+    \begin{claim}
+        The operator $\mathcal{L} := e^x (\d/\d x) e^{-x}= \d/\d x - 1$, 
+        and $L_r(x) = \mathcal{L}^r x^r$.
+    \end{claim}
+    \begin{proof}
+        $\forall f$
+        \begin{align*}
+            \CL = e^x\frac{\d }{\d x}e^{-x} = e^x\left(
+                e^{-x}\frac{\d }{\d x}-e^{-x}\right) = 
+            \frac{\d }{\d x} - 1
+        \end{align*}
+        also 
+        \begin{align*}
+            e^x\frac{\d^2}{\d x^2}e^{-x} = e^x\frac{\d}{\d x}\left(
+                e^{-x}\frac{\d}{\d x} - e^{-x}
+            \right)
+            = e^x\left(
+                e^{-x}\frac{\d^2}{\d x^2} - 2e^{-x}\frac{\d}{\d x} + e^{-x}
+            \right)
+            = \left(\frac{\d}{\d x} - 1\right)^2 = \CL^2
+        \end{align*}
+        Then we can prove by induction that $\CL^n = e^x(\d/\d x)^n e^{-x}$.
+    \end{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item 
+        \item Using the fact that $L_r(x) = \CL^n(x^n$
+        \begin{align*}
+            L_r(x) = \left(\frac{\d}{\d x} - 1\right)^r x^r = 
+            \sum_{k=0}^r (-1)^k\begin{pmatrix}
+                r\\k
+            \end{pmatrix}\left(\frac{\d}{\d x}\right)^{r-k} x^r
+            = \sum_{k=0}^r (-1)^k\begin{pmatrix}
+                r\\k
+            \end{pmatrix}\frac{r!}{k!}x^k
+        \end{align*}
+        Therefore
+        \begin{align*}
+            L^s_r(x)
+            &= \frac{\d^s}{\d x^s} L_r(x)
+            = \sum_{k=s}^r (-1)^k\begin{pmatrix}
+                r\\k
+            \end{pmatrix} \frac{r!}{k!}\frac{k!}{(k-s)!}x^{k-s}\\
+            &= \sum_{k=s}^r (-1)^k \frac{[r!]^2}{(r-k)!(k-s)!}x^{k-s}
+            = \sum_{u=0}^{r-s}(-1)^{u+s}\frac{[r!]^2}{(u+s)!(r-u-s)!}x^u
+        \end{align*}
 
 
-        \item 
+        \item Since $[\d/\d x, 1]=[\d/\d x, \d/\d x]=0$, then we have
+        \begin{align*}
+            L_{r+m}^m = \left(\frac{\d}{\d x}\right)^m \left(
+                \frac{\d }{\d x}-1
+            \right)^{r+m}  x^{r+m}
+            =  \left(
+                \frac{\d }{\d x}-1
+            \right)^{r+m} \left(\frac{\d}{\d x}\right)^m x^{r+m}
+            = \left(
+                \frac{\d }{\d x}-1
+            \right)^{r+m} \frac{(r+m)!}{r!} x^r
+        \end{align*}
+        Then
+        \begin{align*}
+            \sum_{n=0}^\infty \frac{t^r}{(r+m)!}L_{r+m}^m(x)
+            &= \sum_{r=0}^\infty \left(\frac{\d }{\d x} - 1\right)^{r+m}\frac{(r+m)!}{r!} x^r\frac{1}{(r+m)!}t^r\\
+            &= \left(\frac{\d }{\d x} - 1\right)^m \sum_{r=0}^\infty\left(\frac{\d }{\d x} - 1\right)^r t^rx^r\frac{1}{r!}\\
+            &= \left(\frac{\d }{\d x} - 1\right)^m \sum_{r=0}^\infty\frac{t^r}{r!}\left(\frac{\d }{\d x} - 1\right)^r x^r\\
+            &= \left(\frac{\d }{\d x} - 1\right)^m \sum_{r=0}^\infty \frac{t^r}{r!} L_r(x) \\
+            &= \left(\frac{\d }{\d x} - 1\right)^m \frac{1}{1-t}\exp\left(-x\frac{t}{1-t}\right)\\
+            &= \frac{(-1)^m}{(1-t)^{m+1}}\exp\left(-x\frac{t}{1-t}\right)
+        \end{align*}
 
     \end{enumerate}
 \end{problem}
