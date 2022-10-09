@@ -174,15 +174,15 @@
 \begin{enumerate}[label=(\alph*)]
     \item We can show that $\braket{L_x}=0$ algebraically.
     Similarly, we can also show that $\braket{L_y}=0$.
-    Then, $L_{\pm}$ vanish automatically since $L_{\pm} = L_x \pm i L_y$.
+    Then, $\braket{L_{\pm}}$ vanish automatically since $L_{\pm} = L_x \pm i L_y$.
     \begin{align*}
         i\hbar\braket{Y_{l,l}|L_xY_{l,l}}
         &= \braket{Y_{l,l}|[L_y, L_z]Y_{l,l}}
         = \braket{Y_{l,l}|(L_yL_z-L_zL_y)Y_{l,l}} \\
-        &= l\braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}
-        = l\braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}\\
-        &= l\braket{Y_{l,l}|L_yY_{l,l}} - \braket{L_yL_zY_{l,l}|Y_{l,l}}
-        = l\braket{Y_{l,l}|L_yY_{l,l}} - l\braket{Y_{l,l}|L_yY_{l,l}}\\
+        &= l\hbar \braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}
+        = l\hbar \braket{Y_{l,l}|L_y Y_{l,l}} - \braket{Y_{l,l}|L_zL_yY_{l,l}}\\
+        &= l\hbar \braket{Y_{l,l}|L_yY_{l,l}} - \braket{L_yL_zY_{l,l}|Y_{l,l}}
+        = l\hbar \braket{Y_{l,l}|L_yY_{l,l}} - l\hbar \braket{Y_{l,l}|L_yY_{l,l}}\\
         &= 0\Rightarrow \braket{L_x}=0
     \end{align*}
 
@@ -198,7 +198,7 @@
     \end{align*}
     Also, according to the uncertainty relationship $\Delta A\Delta B\geq |\braket{[A,B]}|/2$, we have
     \begin{align*}
-        \Delta L_x\Delta L_y \geq \frac{1}{2} \braket{i\hbar L_z} = \frac{1}{2}\hbar^2l
+        \Delta L_x\Delta L_y \geq \frac{1}{2} |\braket{i\hbar L_z}| = \frac{1}{2}\hbar^2l
     \end{align*}
     Note that the following set of equations could only have a unique solution
     $\Delta L_x=\Delta L_y=\hbar\sqrt{l/2}$.
@@ -227,23 +227,23 @@
             L_z Y_{1, 1}(x, y, z) = \hbar^2 Y_{1, 1}(x, y, z)
         \end{align*}
         Suppose we perform a rotational transformation $(x, y, z)\rightarrow(-z, y, x)$, 
-        then $Y_{1, 1}(-z, y, x)$ would directly be the eigenfunction of $L_z$ with eigenvalue
-        $\hbar^2l$.
-        Since $\mathbf{L}^2$ is rotational invariant, we still have $\mathbf{L}^2Y_{11}(-z, y, x) =\hbar^2l(l+1)
-        Y_{11}(-z, y, x)$.
+        then $Y_{1, 1}(-z, y, x)$ would directly be the eigenfunction of $L_x$ with eigenvalue
+        $\hbar l$.
+        Since $\mathbf{L}^2$ is rotational invariant, we still have $\mathbf{L}^2Y_{1,1}(-z, y, x) =\hbar^2l(l+1)
+        Y_{1,1}(-z, y, x)$.
         \begin{align*}
             L_xY_{1, 1}(-z, y, x) 
             &= (yp_z - zp_y) Y_{1,1}(-z, y, x)
             = [(-z)p_y - yp_{(-z)}] Y_{1,1}(-z,y,x)\\
             &= [x'p_y'  - y' p_{x'}] Y_{1,1}(x',y',x)
-            = \hbar^2l Y_{1,1}(x', y', x)\\
-            &= \hbar^2 l Y_{1,1}(-z, y, x)
+            = \hbar l Y_{1,1}(x', y', x)\\
+            &= \hbar  l Y_{1,1}(-z, y, x)
         \end{align*}
         
-        \item Using the algebraic properties of angular momentum to solve this problem.
+        \item Using the algebraic property of the angular momentum operator to solve this problem.
         \begin{remark}
-            For convenience, I would like to drop all $\hbar$ terms in the equation, i.e.
-            I would written $L_z Y_{1,1} = Y_{1,1}$ instead of $L_z Y_{1,1}=\hbar^2 Y_{1,1}$.
+            For convenience, I would like to drop all $\hbar$ terms in the equation, i.e.,
+            I would written $L_z Y_{1,1} = Y_{1,1}$ instead of $L_z Y_{1,1}=\hbar Y_{1,1}$.
             For notations, let $X_{1,1}$ denote the eigenfunction of $L_x$ with
             $L_x X_{1,1} = X_{1,1}$ and $\mathbf{L}^2 X_{1,1} = 2 X_{1,1}$.
         \end{remark}
@@ -299,7 +299,7 @@
             \end{bmatrix} \text{ a solution}
         \end{align*}
         Therefore $X_{1,1} = Y_{1,-1}/2 + Y_{1,0}/\sqrt{2} + Y_{1,1}/2$ is a normalized eigenfunction
-        of $L_x$ with $L_x X_{1,1} = \hbar^2 X_{1,1}$.
+        of $L_x$ with $L_x X_{1,1} = X_{1,1}$.
     \end{enumerate}
 \end{problem}
 
@@ -310,7 +310,7 @@
         and $L_r(x) = \mathcal{L}^r x^r$.
     \end{claim}
     \begin{proof}
-        $\forall f$
+        Since
         \begin{align*}
             \CL = e^x\frac{\d }{\d x}e^{-x} = e^x\left(
                 e^{-x}\frac{\d }{\d x}-e^{-x}\right) = 
@@ -327,9 +327,10 @@
             = \left(\frac{\d}{\d x} - 1\right)^2 = \CL^2
         \end{align*}
         Then we can prove by induction that $\CL^n = e^x(\d/\d x)^n e^{-x}$.
+        Therefore $L_r(x) = \CL^r x^r$.
     \end{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item Using the fact that $L_r(x) = \CL^n(x^n$
+        \item Using the fact that $L_r(x) = \CL^r x^r$
         \begin{align*}
             L_r(x) = \left(\frac{\d}{\d x} - 1\right)^r x^r = 
             \sum_{k=0}^r (-1)^k\begin{pmatrix}
@@ -346,8 +347,8 @@
             = \sum_{k=s}^r (-1)^k\begin{pmatrix}
                 r\\k
             \end{pmatrix} \frac{r!}{k!}\frac{k!}{(k-s)!}x^{k-s}\\
-            &= \sum_{k=s}^r (-1)^k \frac{[r!]^2}{(r-k)!(k-s)!}x^{k-s}
-            = \sum_{u=0}^{r-s}(-1)^{u+s}\frac{[r!]^2}{(u+s)!(r-u-s)!}x^u
+            &= \sum_{k=s}^r (-1)^k \frac{[r!]^2}{k!(r-k)!(k-s)!}x^{k-s}
+            = \sum_{u=0}^{r-s}(-1)^{u+s}\frac{[r!]^2}{u!(u+s)!(r-u-s)!}x^u
         \end{align*}
 
 
@@ -363,7 +364,7 @@
                 \frac{\d }{\d x}-1
             \right)^{r+m} \frac{(r+m)!}{r!} x^r
         \end{align*}
-        Then
+        Therefore
         \begin{align*}
             \sum_{n=0}^\infty \frac{t^r}{(r+m)!}L_{r+m}^m(x)
             &= \sum_{r=0}^\infty \left(\frac{\d }{\d x} - 1\right)^{r+m}\frac{(r+m)!}{r!} x^r\frac{1}{(r+m)!}t^r\\
