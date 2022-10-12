@@ -176,12 +176,13 @@ Using the relation that $u(r) = rR(r)$, $\varrho=\kappa r$
 to denote $u(\varrho/\kappa)$),
 define the following notation
 \begin{align*}
+    \braket{r^k} &= 4\pi r^2\int\d r\ r^k R(r)^2\\
     \braket{\varrho^k}_u &= 4\pi\int\d \varrho\ \varrho^k u(\varrho)^2
 \end{align*}
-then one can verify
+one can verify
 \begin{align*}
     \braket{\varrho^k}_u &= 4\pi\int\d \kappa r\ (\kappa r)^k r^2 R(r)^2
-    =4\pi\kappa^{k+1} \int r^2\d r r^kR^r(r) = \kappa^{k+1}\braket{r^k}
+    =4\pi\kappa^{k+1} \int r^2\d ri\ r^kR^r(r) = \kappa^{k+1}\braket{r^k}
 \end{align*}
 Using the differential equation
 \begin{align}
@@ -227,11 +228,11 @@ Combing equation \ref{eq:1} and \ref{eq:2} to eliminate $(u')^2$ term, we can ge
     \frac{k}{4}[(2l+1)^2 - k^2]\braket{\varrho^{k-2}}_u - n(2k+1)\braket{\varrho^{k-1}}_u
     + (k+1)\braket{\varrho^k}_u &= 0
 \end{align*}
-Plugin $\kappa = 1/na$ and $\braket{\varrho^k}_u = \kappa^{k+1}\braket{r^k}$, we obtain
+Plugin $\kappa = 1/na$ and $\braket{\varrho^k}_u = \kappa^{k+1}\braket{r^k}$, we get
 \begin{align*}
     \frac{k}{4}[(2l+1)^2 - k^2]\braket{r^{k-2}} - n(2k+1)\kappa\braket{r^{k-1}}
     + (k+1)\kappa^2\braket{r^k} &= 0\\
-    \frac{k+1}{n^2}\braket{r^k} - (2k+1)a\braket{r^{k-1}} + \frac{k}{4}[(2l+1)^2 - k^2]a^2\braket{r^{k-2}}
+    \Rightarrow \frac{k+1}{n^2}\braket{r^k} - (2k+1)a\braket{r^{k-1}} + \frac{k}{4}[(2l+1)^2 - k^2]a^2\braket{r^{k-2}}
     &= 0
 \end{align*}
 
@@ -246,7 +247,7 @@ Let $A_i$ denotes the $i$th component of $\mathbf{A}$, then
     ) - \frac{Ze^2 }{r}x_i = \frac{1}{2m}\epsilon_{ijk}
     (p_jL_k + L_kp_j) - \frac{Ze^2}{r}x_i
 \end{align*}
-where summation would be taken in place of $j$ and $k$.
+where the summation would be taken in place of $j$ and $k$.
 Since $p_j^\dagger=p_j$, $L_k^\dagger=L_k$, then we can prove that
 $A_i$ is hermitian
 \begin{align*}
@@ -259,7 +260,7 @@ $A_i$ is hermitian
 \end{align*}
 Therefore $\mathbf{A}$ is hermitian.
 
-To prove that $[\mathbf{A}, H]=0$, we can first prove $[A_i,H]=0$.
+To prove $[\mathbf{A}, H]=0$, we can show that $[A_i,H]=0$.
 $A_i$ could be simplified to the following expression by direct summation
 over $j$ and $k$.
 \begin{align*}
@@ -356,7 +357,7 @@ we have
     &= -\frac{Ze^2}{2m}\frac{1}{r}x_ip^2 - \frac{Ze^2}{m}\Big[\frac{1}{r}x_ip^2 - \frac{1}{r}(x\cdot p)p_i\\
     &+\ i\hbar\frac{1}{r^3}x_i(x\cdot p) + \hbar^2\frac{1}{r^3}x_i\Big]
 \end{align*}
-Hence the red part is also equal.
+Hence the red parts are also equal.
 Therefore $[A_i, H] = 0$, we have $[\mathbf{A}, H] = 0$.
 
 The proof of $\mathbf{A}\cdot\mathbf{L} = \mathbf{L}\cdot\mathbf{A}=0$
@@ -371,7 +372,7 @@ begins from the following claims.
         = \sum_k 0p_k = 0\\
         \mathbf{L}\cdot x &= \sum_{ijk}\epsilon_{ijk}x_jp_kx_i = 
         \sum_{ijk}\epsilon_{ijk}x_j(x_ip_k-i\hbar\delta_{ik}) =
-        \sum_{ijk}\epsilon_{ijk} x_ix_jp_k-i\hbar\epsilon_{ijk}\delta_{ik} = 0
+        \sum_{ijk}\epsilon_{ijk} x_ix_jp_k-i\hbar\epsilon_{ijk}\delta_{ik}x_j = 0
         \qedhere
     \end{align*}
 \end{proof}
@@ -392,7 +393,7 @@ begins from the following claims.
         (p\times\mathbf{L} - \mathbf{L}\times p)\cdot\mathbf{L} &=
         \sum_{ijk}\epsilon_{ijk}(p_jL_k+L_kp_j)L_i\\
         &= \sum_{ijk}\epsilon_{ijk}(2p_jL_k + i\hbar\sum_l\epsilon_{kjl}p_l)L_i\\
-        &= \sum_j 2i\hbar p_j L_j + \sum_ki\hbar p_k L_k - 3\sum_i p_iL_i\\
+        &= \sum_j 2i\hbar p_j L_j + \sum_ki\hbar p_k L_k - 3\sum_i i\hbar p_iL_i\\
         &= 0\qedhere
     \end{align*}
 \end{proof}
@@ -400,8 +401,8 @@ Therefore, it is easy to show that
 \begin{align*}
     \mathbf{L}\cdot\mathbf{A} &= \frac{1}{2m}\mathbf{L}\cdot(p\times\mathbf{L}
     -\mathbf{L}\times p) - (\mathbf{L}\times x)\frac{Ze^2}{r} = 0\\
-    \mathbf{A}\cdot\mathbf{L} &= \frac{1}{2m}(p\times\mathbf{L}-\mathbf{L}\times p)
-    - \frac{Ze^2}{r}(r\times\mathbf{L}) = 0
+    \mathbf{A}\cdot\mathbf{L} &= \frac{1}{2m}(p\times\mathbf{L}-\mathbf{L}\times p)\dot\mathbf{L}
+    - \frac{Ze^2}{r}(x\times\mathbf{L}) = 0
 \end{align*}
 
 \end{problem}
@@ -453,6 +454,58 @@ Hence $\partial_t \psi^*\psi + \nabla\cdot\mathbf{j} = 0$.
 
 
 \begin{problem}[7.3]
+Let the equation be $H\psi = \lambda\psi$, where the hamiltonian $H$ equals to
+\begin{align*}
+    H &= \frac{1}{2m} \left[p_x^2 + \left(p_y - \frac{e}{c}Bx\right)^2 + p_z^2
+    \right] - eEx
+\end{align*}
+Suppose the solution in the form of $\psi(x, y, z) = e^{k_2y}e^{k_3z}\psi(x)$, then we can get
+a hamiltonian $H_x$ only related to $x$
+\begin{align*}
+    H_x &=
+    \frac{1}{2m}\left[
+    p_x^2 + \left(-i\hbar k_2 - \frac{e}{c}Bx\right)^2 - \hbar^2k_3^2
+    \right] - eEx\\
+    &= \frac{1}{2m}\left[
+    p_x^2 + \left(i\hbar k_2 + \frac{e}{c}Bx\right)^2 - 2meEx - \hbar^2k_3^2
+    \right]\\
+    &= \frac{1}{2m}\left[
+    p_x^2 + \left(\frac{e}{c}Bx + (i\hbar k_2B - mcE)\right)^2 - (i\hbar k_2B-mcE)^2
+    -\hbar^2(k_2^2+k_3^3)
+    \right]
+\end{align*}
+Borrow the idea from a one-dimensional harmonic oscillator where
+\begin{align*}
+    H &= \frac{1}{2m}[p^2 + (m\omega x)^2]\\
+    a_\pm &= \frac{1}{\sqrt{2\hbar m\omega}}(m\omega x \mp ip)\\
+    \psi_0(x) &= \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega}{2\hbar}x^2}\\
+    \psi_n(x) &= A_n(a_+)^n\psi_0(x) \text{ with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega
+\end{align*}
+then we can define $\omega_B$, $x'$ and some operators
+\begin{align*}
+    \omega_B &=  \frac{eB}{mc}\\
+    x' &= x + \frac{c}{eB}(i\hbar k_1B - mcE)\\
+    p' &= p_{x'} = p_x\\
+    a_\pm &= \frac{1}{\sqrt{2\hbar m\omega_B}}(m\omega_B x' \mp ip')
+\end{align*}
+Then we have the solution to $\psi(x')$
+\begin{align*}
+    \psi_0(x') &= \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}x'^2}
+    = \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}(x+\frac{c}{eB}(i\hbar
+    k_1 B - mcE))^2}\\
+    \psi_n(x') &= A_n(a_+)^n\psi_0(x') \text{ with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega_B + C\\
+\end{align*}
+where $A_n$ is the normalization constant and 
+\begin{align*}
+    C &= -\frac{1}{2m}\left[
+    (i\hbar k_2B - mcE)^2 + \hbar^2(k_2^2 + k_3^2)
+    \right]
+\end{align*}
+
+
+
+
+
 \end{problem}
 
 
