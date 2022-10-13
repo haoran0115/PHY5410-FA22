@@ -174,9 +174,9 @@
 Using the relation that $u(r) = rR(r)$, $\varrho=\kappa r$
 (more strictly, we should use the notation $v(\varrho)=u(r)=u(\varrho/\kappa)$ rather than $u(\varrho)$
 to denote $u(\varrho/\kappa)$),
-define the following notation
+define the following notations
 \begin{align*}
-    \braket{r^k} &= 4\pi r^2\int\d r\ r^k R(r)^2\\
+    \braket{r^k} &= 4\pi \int r^2\d r\ r^k R(r)^2\\
     \braket{\varrho^k}_u &= 4\pi\int\d \varrho\ \varrho^k u(\varrho)^2
 \end{align*}
 one can verify
@@ -289,22 +289,16 @@ Then we have
 Using the fact that $H=p^2/2m - Ze^2/r$, we have
 \begin{align*}
     A_iH &=
-    \frac{1}{2m^2}{\color{blue} [x_i(p^2)^2 - (x\cdot p) p^2p_i + i\hbar p^2p_i]
-    }
-    {\color{red}
-    \ -\ \frac{Ze^2}{2m}\frac{1}{r}x_ip^2 - 
+    \frac{1}{2m^2}[x_i(p^2)^2 - (x\cdot p) p^2p_i + i\hbar p^2p_i]
+    -\frac{Ze^2}{2m}\frac{1}{r}x_ip^2 - 
     \frac{Ze^2}{m}[x_ip^2\frac{1}{r} - (x\cdot p)p_i\frac{1}{r}
     +i\hbar p_i\frac{1}{r}]
-    }
     + \frac{Ze^4}{r^2}x_i\\
     HA_i &= 
-    \frac{1}{2m^2}{\color{blue}[p^2x_ip^2 - p^2(x\cdot p)p_i + i\hbar p^2p_i]
-    }
-    {\color{red} 
-    \ -\ \frac{Ze^2}{2m}p^2\frac{1}{r}x_i 
+    \frac{1}{2m^2}[p^2x_ip^2 - p^2(x\cdot p)p_i + i\hbar p^2p_i]
+    -\frac{Ze^2}{2m}p^2\frac{1}{r}x_i 
      - \frac{Ze^2}{m}[\frac{1}{r}x_ip^2 - \frac{1}{r}(x\cdot p)p_i + 
     \frac{1}{r}i\hbar p_i]
-    }
     + \frac{Ze^4}{r^2}x_i
 \end{align*}
 Using the commutation relationship
@@ -314,7 +308,7 @@ Using the commutation relationship
     = \sum_j x_jp^2p_j - 2i\hbar p_j^2= 
     (x\cdot p)p^2 - 2i\hbar p^2
 \end{align*}
-Then it is easy to show that the blue parts are equal
+Then it is easy to show that
 \begin{align*}
     p^2x_ip^2 - p^2(x\cdot p)p_i &= 
     x_i(p^2)^2 - 2i\hbar p^2p_i 
@@ -357,8 +351,7 @@ we have
     &= -\frac{Ze^2}{2m}\frac{1}{r}x_ip^2 - \frac{Ze^2}{m}\Big[\frac{1}{r}x_ip^2 - \frac{1}{r}(x\cdot p)p_i\\
     &+\ i\hbar\frac{1}{r^3}x_i(x\cdot p) + \hbar^2\frac{1}{r^3}x_i\Big]
 \end{align*}
-Hence the red parts are also equal.
-Therefore $[A_i, H] = 0$, we have $[\mathbf{A}, H] = 0$.
+Therefore $A_iH = HA_i$, hence $[A_i, H] = 0$, we have $[\mathbf{A}, H] = 0$.
 
 The proof of $\mathbf{A}\cdot\mathbf{L} = \mathbf{L}\cdot\mathbf{A}=0$
 begins from the following claims.
@@ -459,19 +452,20 @@ Let the equation be $H\psi = \lambda\psi$, where the hamiltonian $H$ equals to
     H &= \frac{1}{2m} \left[p_x^2 + \left(p_y - \frac{e}{c}Bx\right)^2 + p_z^2
     \right] - eEx
 \end{align*}
-Suppose the solution in the form of $\psi(x, y, z) = e^{k_2y}e^{k_3z}\psi(x)$, then we can get
+Suppose the solution in the form of $\psi(x, y, z) = e^{ik_2y}e^{ik_3z}\psi(x)$, then we can get
 a hamiltonian $H_x$ only related to $x$
 \begin{align*}
     H_x &=
     \frac{1}{2m}\left[
-    p_x^2 + \left(-i\hbar k_2 - \frac{e}{c}Bx\right)^2 - \hbar^2k_3^2
+    p_x^2 + \left(\hbar k_2 - \frac{e}{c}Bx\right)^2 + \hbar^2k_3^2
     \right] - eEx\\
     &= \frac{1}{2m}\left[
-    p_x^2 + \left(i\hbar k_2 + \frac{e}{c}Bx\right)^2 - 2meEx - \hbar^2k_3^2
+    p_x^2 + \left(-\hbar k_2 + \frac{e}{c}Bx\right)^2 - 2meEx + \hbar^2k_3^2
     \right]\\
     &= \frac{1}{2m}\left[
-    p_x^2 + \left(\frac{e}{c}Bx + (i\hbar k_2B - mcE)\right)^2 - (i\hbar k_2B-mcE)^2
-    -\hbar^2(k_2^2+k_3^3)
+    p_x^2 + \left(\frac{e}{c}Bx + (-\hbar k_2 - \frac{mcE}{B})\right)^2
+    - (-\hbar k_2-\frac{mcE}{B})^2
+    +\hbar^2(k_2^2+k_3^3)
     \right]
 \end{align*}
 Borrow the idea from a one-dimensional harmonic oscillator where
@@ -484,23 +478,43 @@ Borrow the idea from a one-dimensional harmonic oscillator where
 then we can define $\omega_B$, $x'$ and some operators
 \begin{align*}
     \omega_B &=  \frac{eB}{mc}\\
-    x' &= x + \frac{c}{eB}(i\hbar k_1B - mcE)\\
+    x' &= x + \frac{c}{eB}(-\hbar k_2 - \frac{mcE}{B})\\
     p' &= p_{x'} = p_x\\
     a_\pm &= \frac{1}{\sqrt{2\hbar m\omega_B}}(m\omega_B x' \mp ip')
 \end{align*}
-Then we have the solution to $\psi(x')$
+Then we have the solution to $\psi(x')$ and $\psi(x, y, z)$
 \begin{align*}
     \psi_0(x') &= \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}x'^2}
-    = \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}(x+\frac{c}{eB}(i\hbar
-    k_1 B - mcE))^2}\\
+    = \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}(x+\frac{c}{eB}(-\hbar
+    k_2 - mcE))^2}\\
     \psi_n(x') &= A_n(a_+)^n\psi_0(x') \text{ with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega_B + C\\
+    \psi(x, y, z) &= e^{ik_2y}e^{ik_3z}
+    \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}(x+\frac{c}{eB}(-\hbar
+    k_2 - mcE))^2}\\
+    &= e^{ik_2y}e^{ik_3z}
+    \left(\frac{m\omega_B}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega_B}{2\hbar}(x-x_0)^2}
 \end{align*}
 where $A_n$ is the normalization constant and 
 \begin{align*}
-    C &= -\frac{1}{2m}\left[
-    (i\hbar k_2B - mcE)^2 + \hbar^2(k_2^2 + k_3^2)
+    C &= \frac{1}{2m}\left[
+        - (-\hbar k_2-\frac{mcE}{B})^2
+        +\hbar^2(k_2^2+k_3^3)
     \right]
 \end{align*}
+
+Let $L_x$ denote the restriction on $x$ 
+and $L_y$ denote the periodic condition on $y$.
+Then $e^{ik_2y}$ should have period $L_y$, which means
+\begin{align*}
+    k_2 &= \frac{2n\pi}{L_y},\ n\in\NN
+\end{align*}
+Also, the center $x_0$ satisfies $0 \leq x_0=\hbar ck_2/eB\leq L_x$, then we have
+\begin{align*}
+    \frac{\hbar c}{eB}\frac{2n\pi}{L_y} \leq L_x
+    \Rightarrow
+    n \leq \frac{L_xL_yBe}{2\pi\hbar c} = N
+\end{align*}
+then $N$ is the degeneracy.
 
 
 
