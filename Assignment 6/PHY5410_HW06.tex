@@ -1,0 +1,414 @@
+\documentclass[twoside,11pt]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{sectsty}
+\usepackage{mathrsfs} % mathscr
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{listings}
+% \usepackage{amsart}
+\usepackage{fontspec}
+\usepackage{soul}
+
+
+% allow H option of figure
+\usepackage{float}
+
+% math font (libertine)
+\usepackage{libertinus-otf}
+
+% braket
+\usepackage{braket}
+
+% physics
+% \usepackage{physics}
+
+% define latin modern font environment
+\newcommand{\lms}{\fontfamily{lmss}\selectfont} % Latin Modern Roman
+% \newcommand{\lmss}{\fontfamily{lmss}\selectfont} % Latin Modern Sans
+% \newcommand{\lmss}{\fontfamily{lmtt}\selectfont} % Latin Modern Mono
+
+% % change mathcal shape
+% \usepackage[mathcal]{eucal}
+
+
+% define math operators
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\XX}{\mathbb{Y}}
+\newcommand{\CL}{\mathcal{L}}
+% \renewcommand{\d}{\mathrm{d}}
+\renewcommand*\d{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+
+% section font style
+\sectionfont{\sffamily\Large}
+\subsectionfont{\sffamily\normalsize}
+\subsubsectionfont{\bf}
+
+% line spreading and break
+\hyphenpenalty=5000
+\tolerance=20
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+\allowdisplaybreaks
+\linespread{0.9}
+
+% theorem
+% latex theorem
+% definition style
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{exercise*}{Exercise}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{problem}{Problem}
+% remark style
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem*{claim}{Claim}
+
+
+% paragraph indent
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+
+\newcommand\Code{PHY5410 FA22}
+\newcommand\Ass{HW06}
+\newcommand\name{Haoran Sun}
+\newcommand\mail{haoransun@link.cuhk.edu.cn}
+
+\title{{\lms \Code \ \Ass}}
+\author{\lms \name \ (\href{mailto:\mail}{\mail})}
+\date{\sffamily \today}
+
+\makeatletter
+% \let\Title\@title
+\let\theauthor\@author
+\let\thedate\@date
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\sffamily \Ass}
+    \rhead{\sffamily \name}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancypagestyle{title}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    % \lhead{\Title}
+    % \rhead{\theauthor}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancyfootoffset[L]{0.3cm}
+
+% re-define title format
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\Large\@title}
+
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+\pagestyle{plain}
+
+% lstlisting settings
+\lstset{
+    basicstyle=\linespread{0.7}\footnotesize,
+    breaklines=true,
+    basewidth=0.5em
+}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{title}
+% \begin{multicols*}{2}
+
+% \begin{remark}
+%     $V_\epsilon(x)$ is used to denote a $\epsilon$-neighborhood
+%     \begin{align*}
+%         V_\epsilon(x) = B_\epsilon(x)\setminus\{x\}
+%     \end{align*}
+% \end{remark}
+
+\begin{problem}[9.5]\
+\begin{enumerate}[label=(\alph*)]
+\item Since
+\begin{align*}
+    \frac{\d}{\d t}S_x(t) &= \frac{i}{\hbar}[H, S_x]_H
+    = \frac{i}{\hbar}\frac{eB}{mc}[S_z, S_x]_H
+    = -\frac{eB}{mc}S_y(t)\\
+    \frac{\d}{\d t}S_y(t) &= \frac{i}{\hbar}[H, S_y]_H
+    = \frac{i}{\hbar}\frac{eB}{mc}[S_z, S_y]_H
+    = \frac{eB}{mc}S_x(t)\\
+    \frac{\d}{\d t}S_z(t) &= \frac{i}{\hbar}[H, S_z]_H
+    = \frac{i}{\hbar}\frac{eB}{mc}[S_z, S_z]_H
+    = 0
+\end{align*}
+Thus we have a set of differential equations
+\begin{align*}
+    \frac{\d}{\d t}
+    \begin{bmatrix}
+        S_x(t) \\ S_y(t)
+    \end{bmatrix}
+    = \begin{bmatrix}
+        0 & -eB/mc \\ eB/mc & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        S_x(t) \\ S_y(t)
+    \end{bmatrix}
+\end{align*}
+The solution is
+\begin{align*}
+    \begin{bmatrix}
+        S_x(t)\\ S_y(t)
+    \end{bmatrix} &= 
+    \exp\left(
+    \begin{bmatrix}
+        0 & -\omega t \\ \omega t& 0
+    \end{bmatrix}\right)
+    \begin{bmatrix}
+        S_x(0) \\ S_y(0)
+    \end{bmatrix}
+    = \begin{bmatrix}
+        \cos\omega t\ S_x(0) - \sin\omega t\ S_y(0)\\
+        \sin\omega t\ S_x(0) + \cos\omega t\ S_y(0)
+    \end{bmatrix}
+\end{align*}
+where $\omega = eB/mc$.
+
+\item Note that $S_z$ could be written in $\RR^{2\times 2}$
+under the basis representation
+\begin{align*}
+    S_z &= \frac{\hbar}{2}\begin{bmatrix}
+        1 & 0 \\ 0 & -1
+    \end{bmatrix}
+\end{align*}
+Then
+\begin{align*}
+    \Psi(t) &= \exp(-i\omega S_zt/\hbar)\Psi(0)
+    = \exp\left(
+        -i\frac{\omega}{\hbar}\frac{\hbar}{2}\begin{bmatrix}
+            1 & 0 \\ 0 & -1
+        \end{bmatrix}t
+    \right)\Psi(0)
+    = \begin{bmatrix}
+        e^{-i\omega t/2} & 0\\ 0 & e^{i\omega t/2}
+    \end{bmatrix}\begin{bmatrix}
+        a\\b
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        ae^{-i\omega t/2}\\
+        be^{i\omega t/2}
+    \end{bmatrix}
+\end{align*}
+
+\item It should be clear that the probability of getting
+$\ket{\uparrow}$ would be $|a|^2$ and $\ket{\downarrow}$ should
+be $|b|^2$.
+If the spin is oriented in the $x$ direction when $t=0$, 
+then $[a\quad b]^T$ should be an eigenvector of $S_x$.
+Let $|a|=|b|=1/\sqrt[]{2}$, then we have the probability
+of getting $\ket{\uparrow}$ equals to 
+\begin{align*}
+    P(\ket{\uparrow}) &= |\braket{\uparrow|\psi}|^2 = |ae^{-i\omega t/2}|^2 = |a|^2 = \frac{1}{2}
+\end{align*}
+
+\item Pick eigenfunction of $S_x$ where $S_x\ket{\uparrow_x} = \hbar/2\ket{\uparrow_x}$.
+Let
+\begin{align*}
+    \ket{\uparrow_x} &= \frac{1}{\sqrt[]{2}}\ket{\uparrow} + \frac{1}{\sqrt[]{2}}\ket{\downarrow}
+\end{align*}
+Then the probability of getting $\ket{\uparrow_x}$ is
+\begin{align*}
+    P(\ket{\uparrow_x}) &= |\braket{\uparrow_x|\psi}^2|\\
+    &= 
+    \left[\frac{1}{\sqrt[]{2}}(ae^{-i\omega t/2} + be^{i\omega t/2})\right]^2\\
+    &= \frac{1}{2}(|a|^2 + |b|^2 + a^*be^{i\omega t}+ab^*e^{-i\omega t})\\
+    &= \frac{1}{2} + \frac{1}{2}\cos\omega (t-t_0)
+\end{align*}
+where $t_0$ is determined by $a$ and $b$.
+
+\item \hl{check}
+
+% \item In a time-dependent, external electromagnetic field,
+% the Pauli equation writes
+% \begin{align*}
+%     i\hbar\frac{\partial}{\partial t}
+%     \begin{bmatrix}
+%         \psi_+(x, t)\\ \psi_-(x,t)
+%     \end{bmatrix}
+%     &=\left[
+%         \left(
+%             \frac{1}{2m}\left(
+%                 \frac{\hbar}{i}\nabla - \frac{e}{c}\mathbf{A}(x,t)
+%             \right)^2
+%             + e\Phi(x,t)
+%         \right)\mathbb{1} + \mu_B\boldsymbol{\sigma}\cdot\mathbf{B}
+%     \right] 
+%     \begin{bmatrix}
+%         \psi_+(x, t)\\ \psi_-(x,t)
+%     \end{bmatrix}
+% \end{align*}
+% In this case, since $\mathbf{A}$ and $\mathbf{B}$ are independent from time,
+% then it should be reasonable
+
+
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[10.2]
+Let $\ket{\uparrow\uparrow}$, $\ket{\uparrow\downarrow}$,
+$\ket{\downarrow\uparrow}$ and $\ket{\downarrow\downarrow}$ 
+be a set of orthonormal basis.
+Then we can derive that
+\begin{align*}
+    H\ket{\uparrow\uparrow} &= \left(
+        -\frac{a+b}{2}B\hbar + \frac{1}{4}J\hbar^2
+    \right)\ket{\uparrow\uparrow}\\
+    H\ket{\downarrow\downarrow} &= 
+    \left(
+        \frac{a+b}{2}B\hbar+\frac{1}{4}J\hbar^2
+    \right)\ket{\downarrow\downarrow}\\
+    H\ket{\uparrow\downarrow} &=
+    \left(
+        -\frac{a-b}{2}B\hbar-\frac{1}{4}J\hbar^2
+    \right)\ket{\uparrow\downarrow}
+    + \frac{1}{2}J\hbar^2\ket{\downarrow\uparrow}\\
+    H\ket{\downarrow\uparrow} &=
+    \left(
+        \frac{a-b}{2}B\hbar-\frac{1}{4}J\hbar^2
+    \right)\ket{\downarrow\uparrow}
+    + \frac{1}{2}J\hbar^2\ket{\uparrow\downarrow}
+\end{align*}
+To diagonalize the last two terms, we can consider eigenvalues and
+eigenvectors of the following matrix
+\begin{align*}
+    \begin{bmatrix}
+        -\left(\dfrac{a-b}{2}B\hbar+\frac{1}{4}J\hbar^2\right) & 
+        \dfrac{1}{2}J\hbar^2\\[1em]
+        \dfrac{1}{2}J\hbar^2 & 
+        \left(\dfrac{a-b}{2}B\hbar-\dfrac{1}{4}J\hbar^2\right)
+    \end{bmatrix}
+    \Rightarrow
+    \lambda=-\frac{1}{4}J\hbar^2\pm\frac{1}{2}\sqrt[]{(a-b)^2B^2\hbar^2+J^2\hbar^4}
+\end{align*}
+Therefore we have four eigenvalues corresponding to four eigenstates.
+\begin{align*}
+    \lambda_1 &= -\frac{a+b}{2}B\hbar + \frac{1}{4}J\hbar^2\\
+    \lambda_2 &= -\frac{1}{4}J\hbar^2 + \frac{1}{2}\sqrt[]{(a-b)^2B^2\hbar^2+J^2\hbar^4}\\
+    \lambda_3 &= -\frac{1}{4}J\hbar^2 - \frac{1}{2}\sqrt[]{(a-b)^2B^2\hbar^2+J^2\hbar^4}\\
+    \lambda_4 &= \frac{a+b}{2}B\hbar + \frac{1}{4}J\hbar^2
+\end{align*}
+
+\end{problem}
+
+
+\begin{problem}[11.4]
+Define $\ket{n_0}$ as the $n$th eigenvector of $H_0$, $\psi_0=\ket{0_0}$,
+$H_1=x$, $\lambda=-eE$.
+Using the fact that
+\begin{align*}
+    a_+ & = \frac{1}{\sqrt[]{2m\omega\hbar}}(m\omega x - ip)\\
+    a_- & = \frac{1}{\sqrt[]{2m\omega\hbar}}(m\omega x + ip)\\
+    [a_-, x] &= \frac{1}{\sqrt[]{2m\omega\hbar}}i[p,x] = \sqrt[]{\frac{\hbar}{2m\omega}}\\
+    [a_-^n, x] &= na_-^{n-1}[a_-, x] = n\sqrt[]{\frac{\hbar}{2m\omega}}a_-^{n-1}
+\end{align*}
+The we can conclude that
+\begin{align*}
+    \braket{n_0|x|n_0} &= 0 \\
+    \braket{q_0|x|n_0} &= \frac{1}{\sqrt[]{q! n!}}\braket{a_+^q\psi_0|x|a_+^n\psi_0} 
+    = \frac{1}{\sqrt[]{q! n!}}\braket{\psi_0|a_-^qxa_+^n\psi_0}
+    = \frac{1}{\sqrt[]{q! n!}}\braket{\psi_0|(xa_-^q+ q\sqrt[]{\frac{\hbar}{2m\omega}}a_-^{q-1})a_+^n\psi_0}\\
+    &= \frac{1}{\sqrt[]{q! n!}}q\sqrt[]{\frac{\hbar}{2m\omega}}\braket{\psi_0|a_-^{q-1} a_+^n\psi_0}
+    = \frac{1}{\sqrt[]{q! n!}}q\sqrt[]{\frac{\hbar}{2m\omega}}\braket{a_+^{q-1}\psi_0| a_+^n\psi_0}
+\end{align*}
+Let $q>n$, $\braket{q_0|x|n_0}$ would vanish if $q\neq n+1$ due to the
+orthogonality of eigenfunctions. Hence
+\begin{align*}
+    \braket{q_0|x|n_0} &=\begin{cases}
+        \sqrt[]{\frac{(n+1)\hbar}{2m\omega}} & q = n+1\\
+        0 & \text{otherwise}
+    \end{cases}
+\end{align*}
+We can further generalize the conclusion to
+\begin{align*}
+    \braket{q_0|x|n_0} &=\begin{cases}
+        \sqrt[]{\frac{(n+1)\hbar}{2m\omega}} & q = n+1\\
+        \sqrt[]{\frac{n\hbar}{2m\omega}} & q = n-1\\
+        0 & \text{otherwise}
+    \end{cases}
+\end{align*}
+
+Then, we have
+\begin{align*}
+    E_n^0 &= \left(n+\frac{1}{2}\right)\hbar\omega\\
+    E^1_n &= \braket{n_0|H_1|n_0} = 0\\
+    E^2_n &= -\frac{(n+1)\hbar}{2m\omega}\frac{1}{\hbar\omega} + \frac{n\hbar}{2m\omega}\frac{1}{\hbar\omega}
+    = -\frac{1}{2m\omega^2}\\
+    \ket{n_1} &= -\frac{1}{\hbar\omega}\sqrt[]{\frac{(n+1)\hbar}{2m\omega}}\ket{(n+1)_0}
+    + \frac{1}{\hbar\omega}\sqrt[]{\frac{n\hbar}{2m\omega}}\ket{(n-1)_0}
+\end{align*}
+The energy be expanded to second-order equals to 
+\begin{align*}
+    E &= E_0 + \lambda E_1 + \lambda^2 E_2 
+    = \left(n+\frac{1}{2}\right)\hbar\omega - \frac{e^2E^2}{2m\omega^2}
+\end{align*}
+By some simple algebras, we can show the exact result is
+\begin{align*}
+    E_n &= \left(n+\frac{1}{2}\right)\hbar\omega - \frac{e^2E^2}{2m\omega^2}
+\end{align*}
+Then we can see that it is the same as the exact result.
+\end{problem}
+
+
+
+
+
+% \end{multicols*}
+\end{document}
+
