@@ -198,7 +198,7 @@ Using the fact that
 \begin{align*}
     4\pi\int\d\varrho\ \varrho^m uu' &= -\frac{m}{2}4\pi\int\d\varrho\ \varrho^{m-1}u^2
     = -\frac{m}{2}\braket{\varrho^{m-1}}_u\\
-    4\pi\int\d\varrho\ \varrho^m uu' &= -2\pi(m-1)\int\d\varrho\ \varrho^{m-1} (u')^2\\
+    4\pi\int\d\varrho\ \varrho^m u'u'' &= -2\pi(m-1)\int\d\varrho\ \varrho^{m-1} (u')^2\\
     4\pi\int\d\varrho\ \varrho^m uu'' &= -4\pi m\int\d\varrho\ \varrho^{m-1}uu' -4\pi\int\d\varrho\
     \varrho^m (u')^2
 \end{align*}
@@ -267,7 +267,7 @@ over $j$ and $k$.
     A_i &= \frac{1}{2m}\epsilon_{ijk}\epsilon_{kmn}
     (p_jx_mp_n+x_mp_np_j) - \frac{Ze^2}{r}x_i\\
     &= \frac{1}{2m}\epsilon_{ijk}\epsilon_{kmn}
-    [(x_mp_j - i\hbar\delta_{jm}p_n + x_mp_np_j)] - \frac{Ze^2}{r}x_i\\
+    [(x_mp_jp_n - i\hbar\delta_{jm}p_n + x_mp_np_j)] - \frac{Ze^2}{r}x_i\\
     &= \frac{1}{2m}\epsilon_{kij}\epsilon_{kmn}
     (2x_mp_jp_n - i\hbar\delta_{jm}p_n) - \frac{Ze^2}{r}x_i\\
     &= \frac{1}{2m}(\delta_{im}\delta_{jn} - \delta_{in}\delta_{jm})
@@ -379,7 +379,7 @@ begins from the following claims.
         \mathbf{L}\cdot (p\times\mathbf{L} - \mathbf{L}\times p) &= 
         \sum_{ijk}\epsilon_{ijk}L_ip_jL_k - \epsilon_{ijk}L_iL_jp_k
         =\sum_{ijk}\epsilon_{ijk}L_i(p_jL_k + L_kp_j)\\
-        &= \sum_{ijk}\epsilon_{ijk}(2L_iL_kp_j + i\hbar\sum_{l}\epsilon_{kjl}p_l)\\
+        &= \sum_{ijk}\epsilon_{ijk}(2L_iL_kp_j + i\hbar\sum_{l}\epsilon_{kjl}L_ip_l)\\
         &= \sum_{ijk}2\epsilon_{ijk}L_iL_kp_j - i\hbar\epsilon_{ijk}\epsilon_{kjl}L_ip_l\\
         &= -\sum_j 2i\hbar L_jp_j - \sum_ki\hbar L_kp_k + \sum_i 3i\hbar L_ip_i\\
         &= 0\\
@@ -394,7 +394,7 @@ Therefore, it is easy to show that
 \begin{align*}
     \mathbf{L}\cdot\mathbf{A} &= \frac{1}{2m}\mathbf{L}\cdot(p\times\mathbf{L}
     -\mathbf{L}\times p) - (\mathbf{L}\times x)\frac{Ze^2}{r} = 0\\
-    \mathbf{A}\cdot\mathbf{L} &= \frac{1}{2m}(p\times\mathbf{L}-\mathbf{L}\times p)\dot\mathbf{L}
+    \mathbf{A}\cdot\mathbf{L} &= \frac{1}{2m}(p\times\mathbf{L}-\mathbf{L}\times p)\cdot\mathbf{L}
     - \frac{Ze^2}{r}(x\times\mathbf{L}) = 0
 \end{align*}
 
@@ -465,7 +465,7 @@ a hamiltonian $H_x$ only related to $x$
     &= \frac{1}{2m}\left[
     p_x^2 + \left(\frac{e}{c}Bx + (-\hbar k_2 - \frac{mcE}{B})\right)^2
     - (-\hbar k_2-\frac{mcE}{B})^2
-    +\hbar^2(k_2^2+k_3^3)
+    +\hbar^2(k_2^2+k_3^2)
     \right]
 \end{align*}
 Borrow the idea from a one-dimensional harmonic oscillator where

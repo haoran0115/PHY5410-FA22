@@ -301,15 +301,15 @@ then under the matrix representation, we have
             0 & 1 \\ 0 & 0
         \end{bmatrix}
         + \begin{bmatrix}
-            0 & 0 \\ -1 & 0
+            0 & 0 \\ 1 & 0
         \end{bmatrix}
     \right) = \frac{\hbar}{2}
     \begin{bmatrix}
-        0 & 1\\ -1 & 0
+        0 & 1\\ 1 & 0
     \end{bmatrix}\\
     L_y &= \frac{1}{2i}(L_+ - L_-) 
     = \frac{\hbar}{2i}\begin{bmatrix}
-        0 & 1\\ 1 & 0
+        0 & 1\\ -1 & 0
     \end{bmatrix}
 \end{align*}
 
@@ -326,7 +326,7 @@ we have
     L_z &= \frac{\hbar}{2}\begin{bmatrix}
         1 & & \\
         & 0 & \\
-        & & 1
+        & & -1
     \end{bmatrix}\\
     L_+ &= \hbar\begin{bmatrix}
         & \sqrt[]{2} & \\
@@ -374,7 +374,7 @@ we have
         & & & \sqrt[]{3}\\
         & & & 
     \end{bmatrix}\\
-    L_- &= \begin{bmatrix}
+    L_- &= \hbar\begin{bmatrix}
         & & & \\
         \sqrt[]{3} & & & \\
         & 2 & & \\ 
@@ -433,7 +433,7 @@ we have
         0 & 0 & \sqrt[]{6} & 0 & 2\\
         0 & 0 & 0 & 2 & 0
     \end{bmatrix}\\
-    L_y &= \frac{\hbar}{2}\begin{bmatrix}
+    L_y &= \frac{\hbar}{2i}\begin{bmatrix}
         0 & 2 & 0 & 0 & 0 \\
         -2 & 0 & \sqrt[]{6} & 0 & 0 \\
         0 & -\sqrt[]{6} & 0 & \sqrt[]{6} & 0\\
@@ -478,15 +478,15 @@ By the commutation relationship where
     + \frac{1}{r_{ij}}p_{i\alpha}
 \end{align*}
 where $\alpha=x, y, z$.
-Using the fact that $V(r_{ij})\propto 1/r_{ij}$,
+Using the fact that $V(r_{ij})= \sum_k 1/r^k_{ij}$,
 we have
 \begin{align*}
     \sum_{nj}p_{n\alpha}\frac{1}{r_{nj}} &= 
     \sum_{n<j} p_{n\alpha}\frac{1}{r_{nj}} + p_{j\alpha} \frac{1}{r_{nj}}\\
     &= \sum_{n<j}
-    i\hbar\frac{x_{n\alpha} - x_{j\alpha}}{r_{nj}^3} + \frac{1}{r_{nj}}p_{n\alpha}
+    i\hbar k \frac{x_{n\alpha} - x_{j\alpha}}{r_{nj}^{k+2}} + \frac{1}{r_{nj}}p_{n\alpha}
     +
-    i\hbar\frac{x_{j\alpha} - x_{n\alpha}}{r_{nj}^3} + \frac{1}{r_{nj}}p_{j\alpha}\\
+    i\hbar k \frac{x_{j\alpha} - x_{n\alpha}}{r_{nj}^{k+2}} + \frac{1}{r_{nj}}p_{j\alpha}\\
     &= 
     \sum_{n<j}
     \frac{1}{r_{nj}}p_{n\alpha} + \frac{1}{r_{nj}}p_{j\alpha}\\
@@ -533,24 +533,24 @@ Then
 \end{proof}
 \begin{claim}
 \begin{align*}
-    \left[\sum_{ij}\frac{1}{r_{ij}}, \sum_n L_{n\alpha}\right] = 0
+    \left[\sum_{ij}\frac{1}{r^k_{ij}}, \sum_n L_{n\alpha}\right] = 0
 \end{align*}
 \end{claim}
 \begin{proof}
 Note that
 \begin{align*}    
-    \left[\sum_{ij}\frac{1}{r_{ij}}, \sum_n L_{n\alpha}\right] &=
-    \left(\sum_{ij}\frac{1}{r_{ij}}\right)
+    \left[\sum_{ij}\frac{1}{r^k_{ij}}, \sum_n L_{n\alpha}\right] &=
+    \left(\sum_{ij}\frac{1}{r^k_{ij}}\right)
     \left(\sum_n\epsilon_{\alpha\beta\gamma}x_{n\beta}p_{n\gamma}\right)
     -\left(\sum_n\epsilon_{\alpha\beta\gamma}x_{n\beta}p_{n\gamma}\right)
-    \left(\sum_{ij}\frac{1}{r_{ij}}\right)\\
-    &= 2\sum_{nj}\epsilon_{\alpha\beta\gamma}\frac{1}{r_{nj}}x_{n\beta}p_{n\gamma}
-    - 2\sum_{nj}\epsilon_{\alpha\beta\gamma}x_{n\beta}p_{n\gamma}\frac{1}{r_{nj}}\\
-    &= 2\sum_{nj}\epsilon_{\alpha\beta\gamma}\frac{1}{r_{nj}}x_{n\beta}p_{n\gamma}
+    \left(\sum_{ij}\frac{1}{r^k_{ij}}\right)\\
+    &= 2\sum_{nj}\epsilon_{\alpha\beta\gamma}\frac{1}{r^k_{nj}}x_{n\beta}p_{n\gamma}
+    - 2\sum_{nj}\epsilon_{\alpha\beta\gamma}x_{n\beta}p_{n\gamma}\frac{1}{r^k_{nj}}\\
+    &= 2\sum_{nj}\epsilon_{\alpha\beta\gamma}\frac{1}{r^k_{nj}}x_{n\beta}p_{n\gamma}
     - 2\sum_{nj}\epsilon_{\alpha\beta\gamma}x_{n\beta}\left(
-        i\hbar\frac{x_{n\gamma} - x_{j\gamma}}{r_{nj}^3} + \frac{1}{r_{nj}}p_{n\gamma}
+        i\hbar k \frac{x_{n\gamma} - x_{j\gamma}}{r_{nj}^{k+2}} + \frac{1}{r^k_{nj}}p_{n\gamma}
     \right)\\
-    &= -2i\hbar\sum_{nj}\epsilon_{\alpha\beta\gamma}x_{n\beta}\frac{x_{n\gamma}-x_{j\gamma}}{r_{nj}^3}
+    &= -2i\hbar k \sum_{nj}\epsilon_{\alpha\beta\gamma}x_{n\beta}\frac{x_{n\gamma}-x_{j\gamma}}{r_{nj}^{k+2}}
 \end{align*}
 Since
 \begin{align*}
@@ -563,7 +563,7 @@ Since
 \end{align*}
 Therefore we have
 \begin{align*}
-    \left[\sum_{nj}\frac{1}{r_{nj}}, \sum_n L_{n\alpha}\right] &= 0 \qedhere
+    \left[\sum_{nj}\frac{1}{r^k_{nj}}, \sum_n L_{n\alpha}\right] &= 0 \qedhere
 \end{align*}
 \end{proof}
 According to these two claims, we have $[H,\mathbf{L}] = 0$.
