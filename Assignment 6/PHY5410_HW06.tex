@@ -252,7 +252,7 @@ $\ket{\uparrow}$ would be $|a|^2$ and $\ket{\downarrow}$ should
 be $|b|^2$.
 If the spin is oriented in the $x$ direction when $t=0$, 
 then $[a\quad b]^T$ should be an eigenvector of $S_x$.
-Let $|a|=|b|=1/\sqrt[]{2}$, then we have the probability
+Let $a=b$ and $|a|=|b|=1/\sqrt[]{2}$, then we have the probability
 of getting $\ket{\uparrow}$ equals to 
 \begin{align*}
     P(\ket{\uparrow}) &= |\braket{\uparrow|\psi}|^2 = |ae^{-i\omega t/2}|^2 = |a|^2 = \frac{1}{2}
@@ -269,11 +269,22 @@ Then the probability of getting $\ket{\uparrow_x}$ is
     &= 
     \left[\frac{1}{\sqrt[]{2}}(ae^{-i\omega t/2} + be^{i\omega t/2})\right]^2\\
     &= \frac{1}{2}(|a|^2 + |b|^2 + a^*be^{i\omega t}+ab^*e^{-i\omega t})\\
-    &= \frac{1}{2} + \frac{1}{2}\cos\omega (t-t_0)
+    &= \frac{1}{2} + \frac{1}{2}\cos\omega t = \cos^2(\omega t/2)
 \end{align*}
-where $t_0$ is determined by $a$ and $b$.
+using the fact that $a=b$.
 
-\item Please refer to (b).
+\item Using the equation 
+\begin{align*}
+    i\hbar\frac{\partial}{\partial t}\Psi &= \frac{e_0}{mc}\frac{\hbar}{2}BS_z\Psi
+    \Rightarrow
+    i\hbar\frac{\d}{\d t}\begin{bmatrix}
+        a(t)\\ b(t)
+    \end{bmatrix} 
+    = \frac{e_0}{mc}\frac{\hbar}{2}B\sigma_z\begin{bmatrix}
+        a(t)\\ b(t)
+    \end{bmatrix}
+\end{align*}
+then it can be solved refer to (b).
 
 % \item In a time-dependent, external electromagnetic field,
 % the Pauli equation writes
@@ -302,6 +313,11 @@ where $t_0$ is determined by $a$ and $b$.
 \end{problem}
 
 \begin{problem}[10.2]
+Note that
+\begin{align*}
+    \mathbf{S}_1\mathbf{S}_2 &= S_{1z} S_{2z} + \frac{1}{2}S_{1+}S_{2-}
+    + \frac{1}{2}S_{1-}S_{2+}
+\end{align*}
 Let $\ket{\uparrow\uparrow}$, $\ket{\uparrow\downarrow}$,
 $\ket{\downarrow\uparrow}$ and $\ket{\downarrow\downarrow}$ 
 be a set of orthonormal basis.
@@ -329,7 +345,7 @@ To diagonalize the last two terms, we can consider the eigenvalues and
 eigenvectors of the following matrix
 \begin{align*}
     \begin{bmatrix}
-        -\left(\dfrac{a-b}{2}B\hbar+\frac{1}{4}J\hbar^2\right) & 
+        -\left(\dfrac{a-b}{2}B\hbar+\dfrac{1}{4}J\hbar^2\right) & 
         \dfrac{1}{2}J\hbar^2\\[1em]
         \dfrac{1}{2}J\hbar^2 & 
         \left(\dfrac{a-b}{2}B\hbar-\dfrac{1}{4}J\hbar^2\right)
@@ -363,7 +379,7 @@ The we can conclude that
     \braket{n_0|x|n_0} &= 0 \\
     \braket{q_0|x|n_0} &= \frac{1}{\sqrt[]{q! n!}}\braket{a_+^q\psi_0|x|a_+^n\psi_0} 
     = \frac{1}{\sqrt[]{q! n!}}\braket{\psi_0|a_-^qxa_+^n\psi_0}
-    = \frac{1}{\sqrt[]{q! n!}}\braket{\psi_0|(xa_-^q+ q\sqrt[]{\frac{\hbar}{2m\omega}}a_-^{q-1})a_+^n\psi_0}\\
+    = \frac{1}{\sqrt[]{q! n!}}\braket{\psi_0|\left(xa_-^q+ q\sqrt[]{\frac{\hbar}{2m\omega}}a_-^{q-1}\right)a_+^n\psi_0}\\
     &= \frac{1}{\sqrt[]{q! n!}}q\sqrt[]{\frac{\hbar}{2m\omega}}\braket{\psi_0|a_-^{q-1} a_+^n\psi_0}
     = \frac{1}{\sqrt[]{q! n!}}q\sqrt[]{\frac{\hbar}{2m\omega}}\braket{a_+^{q-1}\psi_0| a_+^n\psi_0}
 \end{align*}
@@ -405,7 +421,7 @@ By some simple algebras, we can show the exact result is
     - \frac{e^2E^2}{2m\omega^2}\Rightarrow
     E_n = \left(n+\frac{1}{2}\right)\hbar\omega - \frac{e^2E^2}{2m\omega^2}
 \end{align*}
-Then we can see that it is the same as the exact result.
+Then we can see that it is the second-order approximation is the same as the exact result.
 \end{problem}
 
 
