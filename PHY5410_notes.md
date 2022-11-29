@@ -354,6 +354,113 @@ $$
 1, P_{12}, P_{13}, P_{23}, P_{123}=P_{13}P_{12}, P_{132}=P_{12}P_{13}
 $$
 
-where $P_{123}$ is the cyclic permutation.
+where $P_{123}$ is the cyclic permutation. For arbitrary observable $O$ , we have $OP = PO$, it should be invariant to permutation operators.
+
+Two special combinations of $\psi$ and its permutations are realized in nature: 
+
+1. Totally symmetric: Bose-Einstein statistics, Boson, integer spin
+2. Totally antisymmetric: Fermi-Dirac statistics, Fermion, half-inter spin
+
+For a realistic wave function of a multi-particle system (identical particles), we have
+
+$$
+P_{ij}\psi(\dots,i,\dots,j,\dots)=
+\pm
+\psi(\dots,i,\dots,j,\dots)
+$$
+
+Label the basis states of an $N$-particle system
+
+$$
+\ket{i_1,\dots,i_N} = 
+\ket{i_1}\cdots\ket{i_N}
+$$
+
+Symmetrized/Anti-symmetrized states
+
+$$
+S_\pm \ket{i_1,\dots,i_N} = 
+\frac{1}{\sqrt{N!}}
+\sum_p (\pm1)^p
+\ket{i_1,\dots,i_N}
+$$
+
+*Example.* 2-particle system
+
+$$
+S_+\ket{1,2} = 
+\frac{1}{\sqrt{2}}
+(\ket{1,2} + \ket{2,1})\\
+S_-\ket{1,2} = 
+\frac{1}{\sqrt{2}}
+(\ket{1,2} - \ket{2,1})
+$$
+
+If the first-state in a 3-particle system occurs 2 times, then
+
+$$
+S_+\ket{1,2,1} = 
+\frac{1}{\sqrt{3!}}
+(\ket{1, 2, 1} + \ket{2, 1, 1} + \ket{1,1,2} + \ket{1,2,1}
++ \ket{2,1,1} + \ket{1,1,2})
+= \frac{2}{\sqrt{3!}}(\ket{1,2,1} + \ket{2,1,1} + \ket{1,1,2})
+$$
+
+If the $$i$$th state occurs $n_i$ times ($n_i$ is called the occupation number), we need to include an extra normalization factor
+
+$$
+\frac{1}{\sqrt{\prod_i n_i!}}S_+\ket{i_i,\dots,i_N}
+$$
+
+Naturally, $\sum_i n_i = N$.
+
+Define a complete and orthogonal set of states for arbitrary particle number $N$.
+Completeness:
+
+$$
+\sum_{n_1,n_1,\dots}\ket{n_1,n_2,\dots}\bra{n_1,n_2,\dots} = 1
+$$
+
+Orthogonality: 
+
+$$
+\braket{n_1,n_2,\dots|n_1',n_2',\dots} = \delta_{n_1n_1'}\delta_{n_2n_2'}\cdots
+$$
+
+Name the vector space as the Fock space.
+
+Creation and annihilation operator
+
+$$
+a_i^\dagger \ket{\dots,n_i,\dots} = \sqrt{n_i+1}\ket{\dots,n_i+1,\dots}
+$$
+
+where the extra factor $\sqrt{n_i+1}$ comes from $(n_i+1)!/n_i!$. Hence
+
+$$
+a_i\ket{\dots,n_i,\dots} = \sqrt{n_i}\ket{\dots,n_i-1,\dots}
+$$
+
+$[a_i, a_j]=0$, $[a_i^\dagger, a_j^\dagger]=0$.
+
+For $i\neq j$ we have $[a_i,a_j^\dagger]=0$.
+
+$$
+a_ia_j^\dagger
+\ket{\dots,n_i,\dots,n_j,\dots}
+=
+\sqrt{n_j+1}\sqrt{n_i}\ket{\dots,n_i-1,\dots,n_j+1,\dots}
+= 
+a_j^\dagger a_i
+\ket{\dots,n_i,\dots,n_j,\dots}
+$$
+
+For $i=j$, we have $[a_i,a_i^\dagger]=1$.
+
+Define the vacuum state
+
+$$
+\ket{0} = \ket{0,\dots,0}
+$$
 
 
