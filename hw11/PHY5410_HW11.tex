@@ -1,0 +1,315 @@
+\documentclass[twoside,11pt]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{sectsty}
+\usepackage{mathrsfs} % mathscr
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{listings}
+% \usepackage{amsart}
+\usepackage{fontspec}
+\usepackage{soul}
+
+
+% allow H option of figure
+\usepackage{float}
+
+% math font (libertine)
+\usepackage{libertinus-otf}
+
+% braket
+\usepackage{braket}
+
+% physics
+% \usepackage{physics}
+
+% define latin modern font environment
+\newcommand{\lms}{\fontfamily{lmss}\selectfont} % Latin Modern Roman
+% \newcommand{\lmss}{\fontfamily{lmss}\selectfont} % Latin Modern Sans
+% \newcommand{\lmss}{\fontfamily{lmtt}\selectfont} % Latin Modern Mono
+
+% % change mathcal shape
+% \usepackage[mathcal]{eucal}
+
+
+% define math operators
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\XX}{\mathbb{Y}}
+\newcommand{\CL}{\mathcal{L}}
+% \renewcommand{\d}{\mathrm{d}}
+\renewcommand*\d{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\erf}{erf}
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+
+% section font style
+\sectionfont{\sffamily\Large}
+\subsectionfont{\sffamily\normalsize}
+\subsubsectionfont{\bf}
+
+% line spreading and break
+\hyphenpenalty=5000
+\tolerance=20
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+\allowdisplaybreaks
+\linespread{0.9}
+
+% enumerate settings
+% no break before enumerate
+\setlist[enumerate]{itemsep=2pt,topsep=2pt}
+
+% theorem
+% latex theorem
+% definition style
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{exercise*}{Exercise}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{problem}{Problem}
+% remark style
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem*{claim}{Claim}
+
+
+% paragraph indent
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+
+\newcommand\Code{PHY5410 FA22}
+\newcommand\Ass{HW11}
+\newcommand\name{Haoran Sun}
+\newcommand\mail{haoransun@link.cuhk.edu.cn}
+
+\title{{\lms \Code \ \Ass}}
+\author{\lms \name \ (\href{mailto:\mail}{\mail})}
+\date{\sffamily \today}
+
+\makeatletter
+% \let\Title\@title
+\let\theauthor\@author
+\let\thedate\@date
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\sffamily \Ass}
+    \rhead{\sffamily \name}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancypagestyle{title}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    % \lhead{\Title}
+    % \rhead{\theauthor}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancyfootoffset[L]{0.3cm}
+
+% re-define title format
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\Large\@title}
+
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+\pagestyle{plain}
+
+% lstlisting settings
+\lstset{
+    basicstyle=\linespread{0.7}\footnotesize,
+    breaklines=true,
+    basewidth=0.5em
+}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{title}
+% \begin{multicols*}{2}
+
+% \begin{remark}
+%     $V_\epsilon(x)$ is used to denote a $\epsilon$-neighborhood
+%     \begin{align*}
+%         V_\epsilon(x) = B_\epsilon(x)\setminus\{x\}
+%     \end{align*}
+% \end{remark}
+
+\begin{problem}[1.1]
+Denote
+\begin{align*}
+    \ket{i_1,\dots,i_N} &= 
+    \varphi_{i_1}(x_1)\cdots\varphi_{i_N}(x_N)
+\end{align*}
+Assume this basis is complete
+\begin{align*}
+    \sum_{i_1,\dots,i_N}
+    \ket{i_1,\dots,i_N}
+    \bra{i_1,\dots,i_N} = 1
+\end{align*}
+Then $\forall \psi_{s/a}$, we have
+\begin{align*} 
+    \sum_{i_1,\dots,i_N}
+    \ket{i_1,\dots,i_N}
+    \braket{i_1,\dots,i_N|\psi_{s/a}} &= \psi_{s/a}\\
+    \sum_{i_1,\dots,i_N}
+    \frac{1}{\sqrt{N!}}S_\pm\ket{i_1,\dots,i_N}
+    \braket{i_1,\dots,i_N|\psi_{s/a}} 
+    &= \frac{1}{\sqrt{N!}}S_\pm\psi_{s/a}\\
+    \sum_{i_1,\dots,i_N}
+    \frac{1}{\sqrt{N!}}S_\pm\ket{i_1,\dots,i_N}
+    \braket{i_1,\dots,i_N|\frac{1}{N!}
+    S_\pm^\dagger S_\pm\psi_{s/a}}
+    &= \psi_{s/a}\\
+    \sum_{i_1,\dots,i_N}
+    \frac{1}{N!}S_\pm\ket{i_1,\dots,i_N}
+    \braket{i_1,\dots,i_N|S_\pm^\dagger\psi_{s/a}}
+    &= \psi_{s/a}
+\end{align*}
+which shows that $S_\pm\ket{i_1,\dots,i_N}$ complete
+$\forall \psi_{s/a}$.
+
+\end{problem}
+
+
+\begin{problem}[1.3]\
+\begin{enumerate}[label=(\alph*)]
+\item Since $[a, (a^\dagger)^m] = m(a^\dagger)^{m-1}$
+\begin{align*}
+    ae^{\alpha a^\dagger} &= 
+    a\sum_{n}\frac{1}{n!}(\alpha a^\dagger)^n =
+    \frac{\alpha^n}{n!}a(a^\dagger)^n = 
+    \sum_n \frac{\alpha^n}{n!}
+    \left[
+        n (a^\dagger)^{n-1}  + (a^\dagger)^n a
+    \right]
+    = \alpha e^{\alpha a^\dagger} + e^{\alpha a^\dagger} a
+    \Rightarrow [a, e^{\alpha a^\dagger}] = 
+    \alpha e^{\alpha a^\dagger}
+\end{align*}
+
+\item Note that
+\begin{align*}
+    e^{-\alpha a^\dagger} a e^{\alpha a^\dagger} &= 
+    e^{-\alpha a^\dagger}[e^{\alpha a^\dagger}a + \alpha e^{\alpha a^\dagger}]
+    = a + \alpha
+\end{align*}
+
+\item Note that
+\begin{align*}
+    e^{-\alpha a^\dagger}\beta a e^{\alpha a^\dagger}
+    &= 
+    \beta a + \beta\alpha
+    \Rightarrow
+    e^{-\alpha a^\dagger}(\beta a)^n e^{\alpha a^\dagger}
+    = (\beta a + \beta\alpha)^n
+\end{align*}
+Hence
+\begin{align*}
+    e^{-\alpha a^\dagger} e^{\beta \alpha}
+    e^{\alpha a^\dagger} &= 
+    \sum_n\frac{1}{n!}(\beta a + \beta \alpha)^n 
+    = e^{\beta a + \beta\alpha}
+    = e^{\beta a}e^{\beta\alpha}
+\end{align*}
+
+\item Since
+\begin{align*}
+    e^{\alpha a^\dagger a}a &=
+    \sum_n \frac{1}{n!}\alpha^n (a^\dagger a)^n a =
+    \sum_n \frac{1}{n!}\alpha^n (a^\dagger a)^{n-1} a (a^\dagger a - 1) =
+    \sum_n \frac{1}{n!}\alpha^n a(a^\dagger a - 1)^n 
+    = ae^{\alpha(a^\dagger a- 1)}
+\end{align*}
+Hence
+\begin{align*}
+    e^{\alpha a^\dagger a}a e^{-\alpha a^\dagger a}
+    = ae^{\alpha a^\dagger a}e^{-\alpha} a e^{-\alpha a^\dagger a}
+    &= ae^{-\alpha}
+\end{align*}
+
+\end{enumerate}
+\label{prob:q2}
+\end{problem}
+
+
+\begin{problem}[1.4]
+There are two methods to solve the problem
+\begin{enumerate}[label=(\roman*)]
+\item Using the differential relation
+\begin{align*}
+    \frac{\d}{\d t} a_i(t) &= 
+    \frac{iHt}{\hbar}e^{iHt/\hbar}a_ie^{-iHt/\hbar}
+    - e^{iHt/\hbar}a_i \frac{iHt}{\hbar}e^{-iHt/\hbar}\\
+    &= 
+    \frac{iHt}{\hbar}e^{iHt/\hbar}a_ie^{-iHt/\hbar}
+    -\frac{iHt}{\hbar}e^{iHt/\hbar}a_ie^{-iHt/\hbar}
+    - \frac{iHt}{\hbar}e^{iHt/\hbar}\frac{i\epsilon_i t}{\hbar}a_ie^{-iHt/\hbar}\\
+    &= -\frac{i\epsilon_i t}{\hbar}a_i\\
+    \Rightarrow
+    a_i(t) &= a_i(0) e^{-i\epsilon_it/\hbar} = a_i e^{-i\epsilon_it/\hbar}
+\end{align*}
+
+\item Using the Bose commutation relation $[a_i, a_j^\dagger] = \delta_{ij}$ and the equation
+from Problem \ref{prob:q2},
+we have
+\begin{align*}
+    a_i(t) &= e^{i\epsilon_it a_i^\dagger a_i/\hbar} 
+    a_i e^{-i\epsilon_it a_i^\dagger a_i/\hbar}
+    = a_i e^{-i\epsilon_it/\hbar}
+\end{align*}
+
+\end{enumerate}
+
+\end{problem}
+
+
+
+
+% \end{multicols*}
+\end{document}
+
