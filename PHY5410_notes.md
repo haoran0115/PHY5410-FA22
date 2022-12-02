@@ -379,6 +379,7 @@ $$
 Symmetrized/Anti-symmetrized states
 
 $$
+\ket{n_1,n_2,\dots} = 
 S_\pm \ket{i_1,\dots,i_N} = 
 \frac{1}{\sqrt{N!}}
 \sum_p (\pm1)^p
@@ -435,7 +436,7 @@ $$
 a_i^\dagger \ket{\dots,n_i,\dots} = \sqrt{n_i+1}\ket{\dots,n_i+1,\dots}
 $$
 
-where the extra factor $\sqrt{n_i+1}$ comes from $(n_i+1)!/n_i!$. Hence
+where the extra factor $\sqrt{n_i+1}$ comes from $(n_i+1)!/n_i!$ (`check definition of annihilation operator` ). Hence
 
 $$
 a_i\ket{\dots,n_i,\dots} = \sqrt{n_i}\ket{\dots,n_i-1,\dots}
@@ -462,5 +463,176 @@ Define the vacuum state
 $$
 \ket{0} = \ket{0,\dots,0}
 $$
+
+1-particle
+
+$$
+a_i^\dagger \ket{0} = \ket{0,\dots,1,\dots}
+$$
+
+2-particle
+
+$$
+\frac{1}{\sqrt{2!}}(a_i^\dagger)^2 \ket{0} = 
+\ket{0,\dots,2,\dots}
+$$
+
+Multi-particle state
+
+$$
+\ket{n_1,n_2,\dots} = 
+\frac{1}{\sqrt{n_1!n_2!\cdots}}
+(a_1^\dagger)^{n_1}(a_2^\dagger)^{n_2}\cdots\ket{0}
+$$
+
+Particle number operator $\hat{n}_i=a_i^\dagger a_i$
+
+$$
+\hat{n}_i\ket{n_1,n_2,\dots} = 
+n_i\ket{n_1,n_2,\dots}
+$$
+
+Fermionic systems: using the Slater determinants
+
+$$
+S_-\ket{i_1,i_2,\dots,i_N} = 
+\frac{1}{\sqrt{N!}}
+\begin{vmatrix}
+    \ket{i_1}_1 & \ket{i_1}_2 & \cdots & \ket{i_1}_N\\
+    \ket{i_2}_1 & \ket{i_2}_2 & \cdots & \ket{i_2}_N\\
+    \vdots & \vdots& \ddots & \vdots\\
+    \ket{i_N}_1 & \ket{i_N}_2 & \cdots & \ket{i_N}_N\\
+\end{vmatrix}
+$$
+
+Note that
+
+$$
+S_-\ket{i_1,i_2,\dots} = a_{i_1}^\dagger a_{i_2}^\dagger\ket{0}\quad
+S_-\ket{i_2,i_1,\dots} = a_{i_2}^\dagger a_{i_1}^\dagger\ket{0}
+$$
+
+Using the antisymmetric property of Fermions, we have
+
+$$
+\{a_i^\dagger, a_j^\dagger\} = 0
+$$
+
+Creation operator in the two different basis $\ket{i}$ and $ket{\lambda}$.
+
+$$
+\ket{\lambda} = 
+\sum_i \ket{i}\braket{i|\lambda}
+= \sum_i a_i^\dagger\ket{0}\braket{i|\lambda}
+$$
+
+therefore 
+
+$$
+a_\lambda^\dagger = \sum_i a_i^\dagger \braket{i|\lambda}\quad
+a_\lambda= \sum_i a_i\braket{\lambda|i}
+$$
+
+under position space $\mathbf{x}$
+
+$$
+a_\mathbf{x}^\dagger = \sum_i \braket{i|\mathbf{x}}a_i^\dagger
+= \psi^\dagger(\mathbf{x})\quad
+a_\mathbf{x} = \sum_i \braket{\mathbf{x}|i}a_i
+= \psi(\mathbf{x})
+$$
+
+Note that
+
+$$
+[\psi(\mathbf{x}), \psi(\mathbf{x})]_\pm = 0\quad
+[\psi(\mathbf{x}), \psi^\dagger(\mathbf{x}')]_\pm
+= \sum_{ij}
+\varphi_i(\mathbf{x})
+\varphi_j^*(\mathbf{x}')[a_i, a_j^\dagger]_\pm
+= \sum_{ij}
+\varphi_i(\mathbf{x})
+\varphi_j^*(\mathbf{x}')\delta_{ij}
+= \delta^{(3)}(\mathbf{x}-\mathbf{x}')
+$$
+
+where $\varphi(\mathbf{x})=\braket{i|\mathbf{x}}$.
+
+The kinetic energy (where $T_{ij}=\braket{i|T|j}$)
+
+$$
+\sum_{ij}T_{ij}a_i^\dagger a_j = 
+\sum_{ij}\int\mathrm{d}\mathbf{x}\
+a_i^\dagger\braket{i|\mathbf{x}}\braket{\mathbf{x}|T|j}a_j
+= \int\mathrm{d}\mathbf{x}\ \psi^\dagger(\mathbf{x})
+\left(-\frac{\hbar^2}{2m}\nabla^2\right)\psi(\mathbf{x})
+$$
+
+$n(\mathbf{x})=\psi^\dagger(\mathbf{x})\psi(\mathbf{x})$ (density operator?)
+
+$$
+N = \int\mathrm{d}\mathbf{x}\
+n(\mathbf{x})
+$$
+
+Time relation of the field operator $\psi$
+
+$$
+\psi(\mathbf{x}, t) = 
+e^{iHt/\hbar}\psi(\mathbf{x}, 0)e^{-iHt/\hbar}
+$$
+
+*Example.* Two-electron interaction
+
+$$
+V' = \frac{1}{2}\int\mathrm{d}\mathbf{x}\mathrm{d}\mathbf{x}'\
+\psi^\dagger(\mathbf{x})\psi^\dagger(\mathbf{x}')V'(\mathbf{x}, \mathbf{x}')
+\psi(\mathbf{x}')\psi(\mathbf{x})
+$$
+
+$\psi_\mathbf{k}(\mathbf{x})=e^{i\mathbf{k}\cdot\mathbf{x}}/N$.
+
+$$
+\int\mathrm{d}\mathbf{x}\ \varphi_\mathbf{k}^*(\mathbf{x})
+\varphi_\mathbf{k}(\mathbf{x}) = \delta_{\mathbf{k}\mathbf{k}'}\quad
+\int\mathrm{d}\mathbf{x}\ \varphi_\mathbf{k}^*(\mathbf{x})
+\left(-\frac{\hbar^2}{2m}\nabla^2\right)
+\varphi_\mathbf{k}(\mathbf{x}) = \delta_{\mathbf{k}\mathbf{k}'}
+\mathbf{k}^2\frac{\hbar^2}{2m}
+$$
+
+Multi-fermion non-interacting system, Fermi sphere with radius $r$.
+$p_F$ is the Fermi momentum
+
+$$
+\ket{\phi} = \prod_{|\mathbf{p}|<p_F}\prod_\sigma a^\dagger_{\mathbf{p}\sigma}
+\ket{0}
+$$
+
+Hence
+
+$$
+\braket{\phi|a_{\mathbf{p}\sigma}^\dagger 
+a_{\mathbf{p}\sigma}|\phi} = \begin{cases}
+    1 & |\mathbf{p}|<p_F\\
+    0 & \text{otherwise}    
+\end{cases}
+$$
+
+$$
+N =  \sum_{\mathbf{p},\sigma}n_{\mathbf{p}\sigma}
+= \sum_{|\mathbf{p}|<p_F} 2
+= \frac{2\cdot\frac{4}{3}\pi p_F^2}{(2\pi \hbar/L)^3}
+= V\frac{p_F^3}{3\pi^2\hbar^3}\\
+\Rightarrow
+n = \frac{N}{V} = \frac{p_F^3}{4\pi^2\hbar^3}
+$$
+
+since the momentum is quantized by the smallest momentum $2\pi\hbar/L$, i.e., $|\mathbf{p}|=n\cdot 2\pi\hbar/L$. Fermi energy: $p_F^2/2m$
+
+Generate the first excited state: two interpretations
+
+1. Excite a fermion out of the Fermi sphere: $\ket{\phi_1} = a^\dagger_{\mathbf{k}'\sigma'} a_{\mathbf{k}\sigma}\ket{\phi}$
+2. Let $b^\dagger_{\mathbf{k}\sigma} = a_{-\mathbf{k},-\sigma}$ which means the creation of a fermion hole
 
 
