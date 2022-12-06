@@ -189,7 +189,7 @@ In this case, we know that
 \begin{align*}
     R_l(r) &= \frac{u_l(r)}{r} = \begin{cases}
         A j_l(kr) & r < a\\
-        B j_l(kr+\delta_l) & r \geq a
+        B j_l(kr+\delta_l) & r \geq a\text{ \hl{should not use the asymptotic form}}
     \end{cases}
 \end{align*}
 where $k=\sqrt{2mE/\hbar^2}$.
@@ -278,7 +278,7 @@ The radial part of the wave function is
 \end{align*}
 To satisfy the continuity
 \begin{align*}
-    R_l(a) &= A j_l(ka) + B n_l(ka) = C j_l(ka+\delta_l) = 0\\
+    R_l(a) &= A j_l(ka) + B n_l(ka) = C j_l(ka+\delta_l) = 0\text{ \hl{should not use the asymptotic form ($C$ term)}}\\
     \Rightarrow
     \delta_l &= \arctan \frac{j_l(ka)}{n_l(ka)} \approx
     ka - \frac{l\pi}{2}
