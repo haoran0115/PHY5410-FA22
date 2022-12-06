@@ -199,8 +199,8 @@
 \begin{align*}
     \hat{N} &= 
     \int\d\mathbf{x}\ n(\mathbf{x})
-    = \int\d\mathbf{x}\ \sum_{ij} a_i^\dagger a_j\braket{i|x}\braket{x|j}
-    = \sum_{ij} a_i^\dagger a_j\int\d\mathbf{x}\braket{i|x}\braket{x|j}
+    = \int\d\mathbf{x}\ \sum_{ij} a_i^\dagger a_j\braket{i|\mathbf{x}}\braket{\mathbf{x}|j}
+    = \sum_{ij} a_i^\dagger a_j\int\d\mathbf{x}\braket{i|\mathbf{x}}\braket{\mathbf{x}|j}
     = \sum_{ij} a_i^\dagger a_j\delta_{ij}
     = \sum_i a_i^\dagger a_j
 \end{align*}
@@ -208,8 +208,10 @@ Using the properties where $[a_i, a_j]=0$, $[a_i, a_j^\dagger]=\delta_{ij}$,
 then we have
 \begin{align*}
     \psi(\mathbf{x})\hat{N} &= 
-    \sum_{ij}a_ia_j^\dagger a_j\braket{x|j}
-    = \sum_{ij}(a_j^\dagger a_i + \delta_{ij})a_j\braket{x|j}
+    \sum_{ij}a_ia_j^\dagger a_j\braket{\mathbf{x}|j}
+    = \sum_{ij}(a_j^\dagger a_i + \delta_{ij})a_j\braket{\mathbf{x}|j}
+    = \sum_{ij}a_j^\dagger a_ja_i\braket{\mathbf{x}|j}
+    + \sum_{j} a_j\braket{\mathbf{x}|j}
     = \hat{N}\psi(\mathbf{x}) + \psi(\mathbf{x})
 \end{align*}
 
@@ -217,7 +219,88 @@ then we have
 \end{problem}
 
 
-\begin{problem}[2.1]
+\begin{problem}[2.1]\
+\begin{enumerate}[label=(\alph*)]
+\item Suppose $\mathbf{q}=0$, then
+\begin{align*}
+    S^0(0) &= 
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    \braket{\phi_0|
+    a_{\mathbf{k}\sigma}^\dagger a_{\mathbf{k}\sigma}
+    a_{\mathbf{k}'\sigma'}^\dagger a_{\mathbf{k}'\sigma'}
+    |\phi_0}
+    = 
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    \braket{\phi_0|
+    n_{\mathbf{k},\sigma}n_{\mathbf{k}',\sigma'}
+    |\phi_0}
+    =
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    = N
+\end{align*}
+
+\item Suppose $\mathbf{q}\neq 0$, then
+\begin{align*}
+    S^0(\mathbf{q}) &=
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    \braket{\phi_0|
+    a_{\mathbf{k}\sigma}^\dagger a_{\mathbf{k}+\mathbf{q}\sigma}
+    a_{\mathbf{k}'\sigma'}^\dagger a_{\mathbf{k}'-\mathbf{q}\sigma'}
+    |\phi_0}
+\end{align*}
+Since $\ket{\phi_0}$ is the ground state, we should have $|\mathbf{k}'-\mathbf{q}|<k_F$.
+Also, since $\mathbf{k}'\neq\mathbf{k}'-\mathbf{q}$, we should have
+$|\mathbf{k}'|\geq k_F$.
+Therefore, $a_{\mathbf{k}'\sigma'}^\dagger a_{\mathbf{k}'-\mathbf{q}\sigma'}\ket{\phi_0}$
+is an excited state, which pops a ground state $\mathbf{k}'-\mathbf{q},\sigma'$ out
+and add an fermion on the high-energy state $\mathbf{k}',\sigma'$.
+Denote this state as
+\begin{align*}
+    a^\dagger_{\mathbf{k}'\sigma'}
+    a_{\mathbf{k}'-\mathbf{q}\sigma'}\ket{\phi_0} &=
+    \ket{\phi_{\mathbf{k'}-\mathbf{q}\sigma'}^{\mathbf{k}'\sigma'}}
+\end{align*}
+Similarly, we have
+\begin{align*}
+    \bra{\phi_0}a_{\mathbf{k}\sigma}^\dagger
+    a_{\mathbf{k}+\mathbf{q}\sigma}
+    &= 
+    \bra{\phi_{\mathbf{k}\sigma}^{\mathbf{k}+\mathbf{q}\sigma}}
+\end{align*}
+where $|\mathbf{k}|<k_F$ and $|\mathbf{k}+\mathbf{q}|>k_F$.
+Then we have
+\begin{align*}
+    S^0(\mathbf{q}) &= 
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    \braket{\phi_{\mathbf{k}\sigma}^{\mathbf{k}+\mathbf{q}\sigma}|
+    \phi_{\mathbf{k'}-\mathbf{q}\sigma'}^{\mathbf{k}'\sigma'}}
+    =
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma\mathbf{k}'\sigma'}
+    \delta_{\sigma\sigma'}\delta_{\mathbf{k},\mathbf{k}'-\mathbf{q}}
+    \delta_{\mathbf{k}',\mathbf{k}+\mathbf{q}}
+    =
+    \frac{1}{N}
+    \sum_{\mathbf{k}\sigma} 1
+\end{align*}
+note that the sum is taken with the restraint
+$\mathbf{k}\in\Omega = \{\mathbf{k}||\mathbf{k}|<k_F, |\mathbf{k}+\mathbf{q}|>k_F\}$.
+Using the continuum limit we have
+\begin{align*}
+    S^0(\mathbf{q}) &= 
+    2\frac{V}{N}\int_\Omega \frac{\d\mathbf{k}}{(2\pi)^3}
+    = \begin{cases}
+        \frac{2+3|\mathbf{q}/2k_F|-|\mathbf{q}/2k_F|^3}{4} & 0 < |\mathbf{q}| \leq 2k_F\\
+        1 & |\mathbf{q}| > 2k_F
+    \end{cases}
+\end{align*}
+
+\end{enumerate}
 \end{problem}
 
 

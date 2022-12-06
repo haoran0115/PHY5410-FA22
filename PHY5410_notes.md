@@ -635,4 +635,103 @@ Generate the first excited state: two interpretations
 1. Excite a fermion out of the Fermi sphere: $\ket{\phi_1} = a^\dagger_{\mathbf{k}'\sigma'} a_{\mathbf{k}\sigma}\ket{\phi}$
 2. Let $b^\dagger_{\mathbf{k}\sigma} = a_{-\mathbf{k},-\sigma}$ which means the creation of a fermion hole
 
+Single-particle correlation function
+
+$$
+G_\sigma(\mathbf{x}-\mathbf{x}') 
+= \braket{\phi_0|\psi_\sigma^\dagger(\mathbf{x})\psi_{\sigma'}(\mathbf{x}')}
+= \braket{\phi_0|\sum_{\mathbf{p},\mathbf{p}'}\frac{1}{V}
+e^{-i\mathbf{p}\cdot\mathbf{x}+i\mathbf{p}'\cdot\mathbf{x}'}
+a^\dagger_{\mathbf{p}\sigma}a_{\mathbf{p}'\sigma'}}
+$$
+
+Note that if $\mathbf{p}\neq\mathbf{p}'$, $\sigma\neq\sigma'$, the eigenkets will be orthogonal, hence
+
+$$
+G_\sigma(\mathbf{x}-\mathbf{x}') 
+= 
+\frac{\delta_{\sigma\sigma'}}{V}\sum_{\mathbf{p}}
+e^{-i\mathbf{p}(\mathbf{x}-\mathbf{x}')}
+\braket{\phi_0|a^\dagger_{p\sigma}a_{p\sigma}|\phi_0}
+$$
+
+Density-density correlation
+
+$$
+\braket{\phi_0|n_\sigma(\mathbf{x})n_{\sigma'}(\mathbf{x}')|\phi_0}
+$$
+
+Pair-distribution function, easy to see that it vanishes at $\mathbf{x}=\mathbf{x}'$ in fermion systems
+
+$$
+\braket{\phi_0|
+\psi_\sigma^\dagger(\mathbf{x})\psi_{\sigma'}^\dagger(\mathbf{x}')
+\psi_{\sigma'}(\mathbf{x}')\psi_\sigma(\mathbf{x})
+|\phi_0}
+= \left(\frac{n}{2}\right)^2g_{\sigma\sigma'}(\mathbf{x}-\mathbf{x}')
+\\
+= \frac{1}{V^2}\sum_{k,k'}\sum_{q,q'}e^{-i(k-k')\cdot x - i(q-q')\cdot x'}
+\braket{\phi_0|a^\dagger_{k\sigma}a^\dagger_{q\sigma}
+a_{q'\sigma'}a_{k'\sigma'}|\phi_0}
+$$
+
+1. $\sigma\neq\sigma'$, it equals to $n^2/4$
+2. If $\sigma=\sigma'$, 2 options: $k'=k$ and $q'=q$, or $k=q$ and $k'=q'$
+
+
+## Relativistic wave equations
+Non-relativistic energy-mass relation: $E\rightarrow i\hbar\partial_t$, $\mathbf{p}=-i\hbar\nabla$
+
+In relativistic energy mass relation, we have
+
+$$
+E^2 = \mathbf{p}^2c^2 + m^2c^4
+\rightarrow
+-h\hbar^2\partial_t^2\psi = (-\hbar^2c^2\nabla^2 + m^2c^4)\psi
+$$
+
+Define the 4-vector 
+
+$$
+p^\mu = (p^0,\mathbf{p})\in\mathbb{R}^4\quad p^0 = \frac{E}{c}
+$$
+
+In the Euclidean space
+
+$$
+\mathrm{d}s^2 = 
+(\mathrm{d}x_1)^2 +
+(\mathrm{d}x_2)^2 +
+(\mathrm{d}x_3)^2
+$$
+
+In Minkowskian space
+
+$$
+\mathrm{d}s^2 = 
+(\mathrm{d}x_0)^2 -
+(\mathrm{d}x_1)^2 -
+(\mathrm{d}x_2)^2 -
+(\mathrm{d}x_3)^2
+$$
+
+$\mathrm{d}s^2>0$: time-like separation; $\mathrm{d}s^2=0$: light-like separation; $\mathrm{d}s^2<0$: space-like separation.
+Consider the diagonal metric.
+`check: Minkowski metric`
+
+$$
+g^{\mu\nu} = \begin{bmatrix}
+    1 & & & \\
+    & -1 & & \\
+    & & -1 & \\ 
+    & & & -1
+\end{bmatrix}=g_{\mu\nu}\\
+\mathrm{p}_{\mu\nu}= g_{\mu\nu}\mathrm{p}^{\mu\nu}\\
+\Rightarrow
+\mathbf{p}^\mu\cdot\mathrm{p}_\mu = m^2c^2
+$$
+
+Hence $\mathrm{p}^\mu\cdot\mathrm{p}_\mu$ is a Lorentz invariant quantity.
+
+
 
