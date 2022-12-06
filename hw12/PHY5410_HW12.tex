@@ -1,0 +1,262 @@
+\documentclass[twoside,11pt]{article}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{sectsty}
+\usepackage{mathrsfs} % mathscr
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{listings}
+% \usepackage{amsart}
+\usepackage{fontspec}
+\usepackage{soul}
+
+
+% allow H option of figure
+\usepackage{float}
+
+% math font (libertine)
+\usepackage{libertinus-otf}
+
+% braket
+\usepackage{braket}
+
+% physics
+% \usepackage{physics}
+
+% define latin modern font environment
+\newcommand{\lms}{\fontfamily{lmss}\selectfont} % Latin Modern Roman
+% \newcommand{\lmss}{\fontfamily{lmss}\selectfont} % Latin Modern Sans
+% \newcommand{\lmss}{\fontfamily{lmtt}\selectfont} % Latin Modern Mono
+
+% % change mathcal shape
+% \usepackage[mathcal]{eucal}
+
+
+% define math operators
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\XX}{\mathbb{Y}}
+\newcommand{\CL}{\mathcal{L}}
+% \renewcommand{\d}{\mathrm{d}}
+\renewcommand*\d{\mathop{}\!\mathrm{d}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\erf}{erf}
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+
+% section font style
+\sectionfont{\sffamily\Large}
+\subsectionfont{\sffamily\normalsize}
+\subsubsectionfont{\bf}
+
+% line spreading and break
+\hyphenpenalty=5000
+\tolerance=20
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+\allowdisplaybreaks
+\linespread{0.9}
+
+% enumerate settings
+% no break before enumerate
+\setlist[enumerate]{itemsep=2pt,topsep=2pt}
+
+% theorem
+% latex theorem
+% definition style
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{exercise*}{Exercise}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{problem}{Problem}
+% remark style
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem*{claim}{Claim}
+
+
+% paragraph indent
+\setlength{\parindent}{0em}
+\setlength\parskip{0.5em}
+
+\newcommand\Code{PHY5410 FA22}
+\newcommand\Ass{HW12}
+\newcommand\name{Haoran Sun}
+\newcommand\mail{haoransun@link.cuhk.edu.cn}
+
+\title{{\lms \Code \ \Ass}}
+\author{\lms \name \ (\href{mailto:\mail}{\mail})}
+\date{\sffamily \today}
+
+\makeatletter
+% \let\Title\@title
+\let\theauthor\@author
+\let\thedate\@date
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \lhead{\sffamily \Ass}
+    \rhead{\sffamily \name}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancypagestyle{title}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    % \lhead{\Title}
+    % \rhead{\theauthor}
+    \rfoot{\sffamily\thepage}
+
+    % # 页脚自定义
+    \fancyfoot[L]{
+        \begin{minipage}[c]{0.06\textwidth}
+            \includegraphics[height=7.5mm]{logo2.png}
+        \end{minipage}
+    }
+}
+\fancyfootoffset[L]{0.3cm}
+
+% re-define title format
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+  \textbf{\Large\@title}
+
+  \@author
+\end{flushleft}\egroup
+}
+\makeatother
+
+\pagestyle{plain}
+
+% lstlisting settings
+\lstset{
+    basicstyle=\linespread{0.7}\footnotesize,
+    breaklines=true,
+    basewidth=0.5em
+}
+
+
+\begin{document}
+\maketitle
+\thispagestyle{title}
+% \begin{multicols*}{2}
+
+% \begin{remark}
+%     $V_\epsilon(x)$ is used to denote a $\epsilon$-neighborhood
+%     \begin{align*}
+%         V_\epsilon(x) = B_\epsilon(x)\setminus\{x\}
+%     \end{align*}
+% \end{remark}
+
+\begin{problem}[1.10]\
+\begin{enumerate}[label=(\alph*)]
+\item Let $\ket{\phi}=\psi(\mathbf{x}')\ket{0}$, then we have
+\begin{align*}
+    n(\mathbf{x})\ket{\phi} &= 
+    \psi^\dagger(\mathbf{x})\psi(\mathbf{x})
+    \psi^\dagger(\mathbf{x}')\ket{0}
+    = \psi^\dagger(\mathbf{x})[
+        \psi^\dagger(\mathbf{x}')\psi(\mathbf{x})
+        + \delta(\mathbf{x}-\mathbf{x}')
+    ]\ket{0}\\
+    &= \psi^\dagger(\mathbf{x})\psi^\dagger(\mathbf{x}')\psi(\mathbf{x})\ket{0}
+    + \psi^\dagger(\mathbf{x})\delta(\mathbf{x}-\mathbf{x}')\ket{0}\\
+    &= \psi^\dagger(\mathbf{x})\delta(\mathbf{x}-\mathbf{x}')\ket{0}
+\end{align*}
+
+\item Note that
+\begin{align*}
+    \hat{N} &= 
+    \int\d\mathbf{x}\ n(\mathbf{x})
+    = \int\d\mathbf{x}\ \sum_{ij} a_i^\dagger a_j\braket{i|x}\braket{x|j}
+    = \sum_{ij} a_i^\dagger a_j\int\d\mathbf{x}\braket{i|x}\braket{x|j}
+    = \sum_{ij} a_i^\dagger a_j\delta_{ij}
+    = \sum_i a_i^\dagger a_j
+\end{align*}
+Using the properties where $[a_i, a_j]=0$, $[a_i, a_j^\dagger]=\delta_{ij}$,
+then we have
+\begin{align*}
+    \psi(\mathbf{x})\hat{N} &= 
+    \sum_{ij}a_ia_j^\dagger a_j\braket{x|j}
+    = \sum_{ij}(a_j^\dagger a_i + \delta_{ij})a_j\braket{x|j}
+    = \hat{N}\psi(\mathbf{x}) + \psi(\mathbf{x})
+\end{align*}
+
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}[2.1]
+\end{problem}
+
+
+\begin{problem}[2.6]\
+\begin{enumerate}[label=(\alph*)]
+\item 
+\begin{align*}
+    e^{-\alpha a^\dagger} a e^{\alpha a^\dagger}
+    &= (1 - \alpha a^\dagger) a (1 + \alpha a^\dagger)
+    = (a - \alpha a^\dagger a)(1 + \alpha a^\dagger)
+    = a - \alpha^2 a^\dagger + \alpha(aa^\dagger - a^\dagger a)\\
+    e^{-\alpha a} a^\dagger e^{\alpha a}
+    &= (1 - \alpha a) a^\dagger (1 + \alpha a)
+    = (a^\dagger - \alpha aa^\dagger) (1+\alpha a)
+    = a^\dagger - \alpha^2 a + \alpha(a^\dagger a - aa^\dagger)
+\end{align*}
+
+\item 
+\begin{align*}
+    e^{\alpha a^\dagger a}a e^{-\alpha a^\dagger a}
+    &= 
+    (1 + \alpha a^\dagger a + \cdots) a \sum_n \frac{(-\alpha)^n}{n!}(a^\dagger a)^n\\
+    &= (1 + \alpha a^\dagger a + \cdots) \sum_n\frac{(-\alpha)^n}{n!}a(a^\dagger a)(a^\dagger a)^{n-1}\\
+    &= (1 + \alpha a^\dagger a + \cdots) \sum_n\frac{(-\alpha)^n}{n!}(1-a^\dagger a)a(a^\dagger a)^{n-1}\\
+    &= (1 + \alpha a^\dagger a + \cdots) \sum_n\frac{(-\alpha)^n}{n!}a(a^\dagger a)^{n-1}\\
+    &= (1 + \alpha a^\dagger a + \cdots) \sum_n\frac{(-\alpha)^n}{n!}a = e^{-\alpha} a\\
+    e^{\alpha a^\dagger}a^\dagger e^{-\alpha a^\dagger a}
+    &= \sum_n\frac{\alpha^n}{n!}(a^\dagger a)^n a^\dagger (1 + \alpha a^\dagger a + \cdots)\\
+    &= \sum_n\frac{\alpha^n}{n!}(a^\dagger a)^{n-1}(a^\dagger a)a^\dagger (1 + \alpha a^\dagger a + \cdots)\\
+    &= \sum_n\frac{\alpha^n}{n!}(a^\dagger a)^{n-1} a^\dagger(1 + \alpha a^\dagger a + \cdots)\\
+    &= \sum_n\frac{\alpha^n}{n!}a^\dagger (1 + \alpha a^\dagger a + \cdots)\\
+    &= e^{\alpha}a^\dagger
+\end{align*}
+
+\end{enumerate}
+\end{problem}
+
+
+
+% \end{multicols*}
+\end{document}
+
