@@ -682,17 +682,21 @@ $$
 ## Relativistic wave equations
 Non-relativistic energy-mass relation: $E\rightarrow i\hbar\partial_t$, $\mathbf{p}=-i\hbar\nabla$
 
-In relativistic energy mass relation, we have
+In relativistic energy mass relation, we have the Klein-gordon equation
 
 $$
 E^2 = \mathbf{p}^2c^2 + m^2c^4
 \rightarrow
--h\hbar^2\partial_t^2\psi = (-\hbar^2c^2\nabla^2 + m^2c^4)\psi
+-\hbar^2\partial_t^2\psi = (-\hbar^2c^2\nabla^2 + m^2c^4)\psi
 $$
 
-Define the 4-vector 
+where $m$ is the rest mass.
+
+Define the 4-vector (contra-variant vector)
 
 $$
+\mathbf{x}^\mu = (ct, \mathbf{x})\in\mathbb{R}^4
+\\
 p^\mu = (p^0,\mathbf{p})\in\mathbb{R}^4\quad p^0 = \frac{E}{c}
 $$
 
@@ -731,7 +735,178 @@ g^{\mu\nu} = \begin{bmatrix}
 \mathbf{p}^\mu\cdot\mathrm{p}_\mu = m^2c^2
 $$
 
+where $\mathbf{p}_\mu = g_{\mu\nu}\mathbf{p}^\nu$, sum over $\nu$.
+Then
+
+$$
+\mathrm{d}s^2 = \mathrm{d}\mathbf{x}^\mu\mathrm{d}\mathbf{x}_\mu
+$$
+
 Hence $\mathrm{p}^\mu\cdot\mathrm{p}_\mu$ is a Lorentz invariant quantity.
 
+Let
+
+$$
+\partial_\mu = \frac{\partial}{\partial x^\mu}
+$$
+
+Then the K-G equation can be written to 
+
+$$
+\left[
+\partial_\mu\partial^\mu + \left(\frac{mc}{\hbar}\right)^2
+\right]\psi = 0
+$$
+
+Set $c=\hbar=1$ for convenience.
+
+$$
+\begin{cases}
+    \psi^*(\partial_\mu\partial^\mu + m^2)\psi &= 0\\
+    \psi(\partial_\mu\partial^\mu + m^2)\psi^* &= 0
+\end{cases}
+\Rightarrow
+\frac{\partial}{\partial t}\left[
+    \frac{i}{2m}\left(
+        \psi^*\partial_t\psi - \psi\partial_t\psi^*
+    \right)
+\right]
++ \nabla\cdot\frac{1}{2mi}(\psi^*\nabla\psi - \psi\nabla\psi^*) = 0\\
+\partial_t\rho + \nabla\cdot\mathbf{j} = 0
+$$
+
+One problem is that in the relativistic system we have $\rho$ non-real, however in non-relativistic system we should have $\rho\geq 0$.
+
+Let solution to K-G equation be in the following form, another problem is it allows negative energy
+
+$$
+\psi = e^{i(Et-\mathbf{p}\cdot\mathbf{x})},\quad
+E = \pm\sqrt{\mathbf{p}^2+m^2}
+$$
+
+The Dirac equation
+
+$$
+i\hbar\partial_t\psi = (-i\alpha^k\partial_k + \beta_m)\psi = H\psi
+$$
+
+Note that if we apply another $i\partial_t$ to the Dirac equation we should recover the C-G equation
+
+$$
+-\partial_t^2\psi = 
+\left[
+    \cdots
+\right]\psi
+$$
+
+Compare to the C-G equation, we have three constraint equations
+
+$$
+\begin{aligned}
+    \alpha^k\alpha^j + \alpha^j\alpha^k &= 2\delta_{kj}\\
+    \alpha^k\beta + \beta\alpha^k &= 0\\
+    \beta^2 &= 0
+\end{aligned}
+$$
+
+Hence $\alpha^k$ and $\beta$ are matrices.
+$\alpha^k$, $\beta$ must be Hermitian matrices, then $\alpha_{ii}=\pm 1$,
+$\beta_{jj}=\pm 1$. Note that
+
+$$
+\alpha^k\beta + \beta\alpha^k = 0
+\Rightarrow
+\alpha^k = -\beta\alpha^k\beta
+\Rightarrow
+\mathrm{tr}(\alpha^k) = 0
+$$
+
+In 2-dim space, not possible.
+In 4-dim space, for example, we can define $\alpha^i$ and $\beta$ as
+
+$$
+\alpha=\begin{bmatrix}
+    0 & \sigma^i\\
+    \sigma^i & 0
+\end{bmatrix}\quad
+\beta = \begin{bmatrix}
+    \mathbf{1} & 0\\
+    0 & -\mathbf{1}
+\end{bmatrix}
+$$
+
+4-dim spinor
+
+$$
+\psi=\begin{bmatrix}
+    \psi_1\\ \psi_2 \\ \psi_3 \\ \psi_4
+\end{bmatrix}
+$$
+
+Rewrite the equation
+
+$$
+-i\partial_0\psi - i\alpha^i\partial_i\psi + \beta^2 m\psi = 0
+$$
+
+Dirac matrices
+
+$$
+\gamma^0 = \beta,\ \gamma^i = \beta\alpha^i
+\Rightarrow
+(-i\gamma^\mu\partial_\mu + m)\psi = 0
+$$
+
+Properties of Dirac matrices
+
+$$
+\gamma^\mu \gamma^\nu + \gamma^\nu\gamma^\mu = 2g^{\mu\nu}\mathbf{1}
+$$
+
+Solution of Dirac equation
+
+$$
+i\partial_t\psi = \beta m\psi\text{ for an electron at rest}\\
+i\partial_t
+\begin{bmatrix}
+    \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4
+\end{bmatrix}
+= \begin{bmatrix}
+    m\mathbf{1} & 0\\
+    0 & -m\mathbf{1}
+\end{bmatrix}
+\begin{bmatrix}
+    \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4
+\end{bmatrix}
+$$
+
+Then 
+
+$$
+\begin{aligned}
+\tilde{\psi}_1 &= e^{-imt}\mathbf{e}_1\\
+\tilde{\psi}_2 &= e^{-imt}\mathbf{e}_2\\
+\tilde{\psi}_3 &= e^{imt}\mathbf{e}_3\\
+\tilde{\psi}_4 &= e^{imt}\mathbf{e}_4
+\end{aligned}
+$$
+
+easy to show that the 3rd and 4th solutions have negative-energy solutions.
+
+Consider the non-relativistic limit of Dirac equation, we should be able to reproduce the result from classical Schrodinger equation.
+Separate $\psi$ to two 2-dim spinors
+
+$$
+\psi = 
+\begin{bmatrix}
+    \varphi \\ \chi
+\end{bmatrix}
+= e^{-imt}
+\begin{bmatrix}
+    \varphi_0 \\ \chi_0
+\end{bmatrix}
+$$
+
+For electrons, the term $\mathbf{\sigma}\cdot\mathbf{B}$ appears naturally according to the Dirac equation (in classical case we need to add this by hand).
 
 
