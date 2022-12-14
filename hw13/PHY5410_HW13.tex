@@ -271,32 +271,29 @@ where $\omega_B = eB/mc$ (suppose $E\geq 0$).
 \begin{problem}[6.2]
 Note that
 \begin{align*}
-    x_\mu &= g_{\mu\nu}x^\nu\quad
-    x^\mu = g^{\mu\nu}x_\nu
+    x^\mu &= g^{\mu\nu}x_\nu\quad
+    x_\mu = g_{\mu\nu}x^\nu
 \end{align*}
-Then
+and 
 \begin{align*}
-    \partial^\mu &=
-    \frac{\partial}{\partial x_\mu}
-    = \frac{\partial x^\nu}{\partial x_\mu}\frac{\partial}{\partial x^\nu}
-    = g^{\nu\mu} \partial_\nu
+    {x'}^\mu &= {\Lambda^\mu}_\nu x^\nu\quad
+    x'_\mu = g_{\mu\nu}{\Lambda^\nu}_\sigma g^{\sigma\rho}x_\rho = 
+    {\Lambda_\rho}^\mu x_\rho
 \end{align*}
-where the sum is taken on $\nu$.
-Also since
+Note that if we sum over $b$
 \begin{align*}
-    {x'}^\mu &= \Lambda^\mu_\nu x^\nu
+    {\Lambda^a}_b{\Lambda_c}^b &=
+    {\Lambda^a}_b g_{b\nu}{\Lambda^\nu}_\sigma g^{\sigma c}
+    = g_{a\sigma}g^{\sigma c}
+    = \delta_{ac}
 \end{align*}
-we have
+Then $({\Lambda^\mu}_\nu)^{-1} = {\Lambda_\nu}^\mu$.
+Hence
 \begin{align*}
-    \partial_\mu &= 
-    \frac{\partial}{\partial x^\mu}
-    = \frac{\partial {x'}^\nu}{\partial x^\mu}\frac{\partial}{\partial {x'}^\nu}
-    = \Lambda^\nu_\mu\partial_\nu'
-\end{align*}
-Similarly
-\begin{align*}
-    \partial_\mu = g_{\nu\mu}\partial^\nu\quad
-    \partial
+    \partial'_\mu &= 
+    \frac{\partial x^\nu}{\partial {x'}^\mu}\partial_\nu = {\Lambda_\mu}^\nu\partial_\nu\\
+    {\partial'}^\mu &= 
+    \frac{\partial x_\nu}{\partial x'_\mu}\partial_\nu = {\Lambda^\nu}_\mu\partial^\nu
 \end{align*}
 
 \end{problem}
@@ -305,18 +302,18 @@ Similarly
 \begin{problem}[6.4]
 The Dirac equation reads
 \begin{align*}
-    [-\gamma^\mu(\partial_\mu - \frac{e}{c}A_\mu) + mc]\psi &= 0
+    [-\gamma^\mu(i\hbar \partial_\mu - \frac{e}{c}A_\mu) + mc]\psi &= 0
 \end{align*}
 Hence
 \begin{align*}
-    [-\gamma^\nu(\partial_\nu - \frac{e}{c}A_\nu) - mc]
-    [-\gamma^\mu(\partial_\mu - \frac{e}{c}A_\mu) + mc]
+    [-\gamma^\nu(i\hbar \partial_\nu - \frac{e}{c}A_\nu) - mc]
+    [-\gamma^\mu(i\hbar \partial_\mu - \frac{e}{c}A_\mu) + mc]
     \psi &= 0\\
     [
     \gamma^\nu
     \gamma^\mu
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     - m^2c^2]
     \psi &= 0
 \end{align*}
@@ -325,58 +322,131 @@ where $\sigma^{\mu\nu}=i[\gamma^\mu,\gamma^\nu]/2$.
 Then
 \begin{align*}
     [\gamma^\nu\gamma^\mu
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     - m^2c^2]
     \psi &= 0\\
     [(g^{\nu\mu}\mathbb{1} + i\sigma^{\mu\nu})
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     - m^2c^2]
     \psi &= 0\\
     [
     (\partial - \frac{e}{c}A)^2
     + i\sigma^{\mu\nu}
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     - m^2c^2]
     \psi &= 0\\
     [
     (\partial - \frac{e}{c}A)^2
     - i\sigma^{\mu\nu}
-    (\partial_\mu - \frac{e}{c}A_\mu)
-    (\partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
     - m^2c^2]
     \psi &= 0
 \end{align*}
 Note that
 \begin{align*}
     i\sigma^{\mu\nu}
-    (\partial_\mu - \frac{e}{c}A_\mu)
-    (\partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
     &= \frac{1}{2}[
     i\sigma^{\mu\nu}
-    (\partial_\mu - \frac{e}{c}A_\mu)
-    (\partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
     + 
     i\sigma^{\nu\mu}
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     ]\\
     &= \frac{1}{2}[
     i\sigma^{\mu\nu}
-    (\partial_\mu - \frac{e}{c}A_\mu)
-    (\partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
     -
     i\sigma^{\mu\nu}
-    (\partial_\nu - \frac{e}{c}A_\nu)
-    (\partial_\mu - \frac{e}{c}A_\mu)
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu)
     ]\\
     &= \frac{i}{2}\sigma^{\mu\nu}[
-    (\partial_\mu - \frac{e}{c}A_\mu),
-    (\partial_\nu - \frac{e}{c}A_\nu)
+    (i\hbar \partial_\mu - \frac{e}{c}A_\mu),
+    (i\hbar \partial_\nu - \frac{e}{c}A_\nu)
     ]\\
-    &= \frac{i}{2}\sigma^{\mu\nu}F_{\mu\nu}
+    &= \frac{\hbar}{2}\frac{e}{c}\sigma^{\mu\nu}F_{\mu\nu} 
+    \quad\text{\color{red}I don't understand how this step works}
+\end{align*}
+Therefore 
+\begin{align*}
+    [(\partial - \frac{e}{c}A)^2
+    -\frac{he}{2c}\sigma^{\mu\nu}F_{\mu\nu}
+    - m^2c^2]
+    \psi &= 0
+\end{align*}
+Note that 
+\begin{align*}
+    A &= \begin{bmatrix}
+        \Phi\\ A_1 \\ A_2 \\ A_3
+    \end{bmatrix}\quad
+    E = \nabla\Phi = \begin{bmatrix}
+        E_1 \\ E_2 \\ E_3
+    \end{bmatrix}\quad
+    B = \nabla\times
+    \begin{bmatrix}
+        A_1 \\ A_2 \\ A_3
+    \end{bmatrix} = \begin{bmatrix}
+        B_1 \\ B_2 \\ B_3
+    \end{bmatrix}
+\end{align*}
+Therefore
+\begin{align*}
+    F &= \begin{bmatrix}
+        0 & -E_1 & -E_2 & -E_3\\
+        E_1 & 0 & B_3 & -B_2\\
+        E_2 & -B_3 & 0 & B_1\\
+        E_3 & B_2 & -B_1 & 0
+    \end{bmatrix}
+\end{align*}
+Note that
+\begin{align*}
+    \sigma^{0\nu} &= 
+    \frac{i}{2}[\gamma^0, \gamma^\nu] = \frac{i}{2}[\beta,\beta\alpha^\nu]
+    = \frac{i}{2}\beta[\beta, \alpha^\nu] = \frac{i}{2}\beta(2\beta\alpha^\nu)
+    = i\alpha^\nu
+\end{align*}
+Hence for $\mu=0$ or $\nu=0$, we have 
+\begin{align*}
+    \sigma^{\mu\nu}F_{\mu\nu} &= 2\sigma^{0\nu}F_{0\nu}
+    = -2i\alpha\cdot E
+\end{align*}
+For all $\mu,\nu\geq 1$, we have
+\begin{align*}
+    \sigma^{\mu\nu} &=
+    \frac{i}{2}[\gamma^\nu, \gamma^\nu]
+    = \frac{i}{2}[\beta\alpha^\mu,\beta\alpha^\nu]
+    = \frac{i}{2}[\alpha^\nu, \alpha^\mu]
+    = -\frac{i}{2}2i\epsilon_{\nu\mu\rho}\Sigma_\rho
+    = \epsilon_{\mu\nu\rho}\Sigma_\rho
+\end{align*}
+Then for all $\mu,\nu\geq 1$
+\begin{align*}
+    \sigma^{\mu\nu}F_{\mu\nu} &= 
+    \sigma_{\mu\nu\rho}\Sigma_\rho \epsilon_{\mu\nu\sigma}B_\sigma
+    = 2\delta_{\rho\sigma}\Sigma_\rho B_\sigma
+    = 2\Sigma\cdot B
+\end{align*}
+Hence 
+\begin{align*}
+    \sigma^{\mu\nu}F_{\mu\nu} &= 
+    -2i\alpha\cdot E + 2\Sigma\cdot B
+    = -2i (\alpha\cdot E + i\Sigma\cdot B)
+\end{align*}
+The Dirac equation becomes
+\begin{align*}
+    [(\partial - \frac{e}{c}A)^2
+    +\frac{i\hbar e}{c}(\alpha\cdot E + i\Sigma\cdot B)
+    - m^2c^2]
+    \psi &= 0
 \end{align*}
 
 \end{problem}
