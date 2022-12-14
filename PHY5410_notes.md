@@ -871,9 +871,9 @@ i\partial_t
 \begin{bmatrix}
     \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4
 \end{bmatrix}
-= \begin{bmatrix}
-    m\mathbf{1} & 0\\
-    0 & -m\mathbf{1}
+= m\begin{bmatrix}
+    \mathbf{1} & 0\\
+    0 & -\mathbf{1}
 \end{bmatrix}
 \begin{bmatrix}
     \psi_1 \\ \psi_2 \\ \psi_3 \\ \psi_4
@@ -907,6 +907,149 @@ $$
 \end{bmatrix}
 $$
 
-For electrons, the term $\mathbf{\sigma}\cdot\mathbf{B}$ appears naturally according to the Dirac equation (in classical case we need to add this by hand).
+For electrons, the term $\mathbf{\sigma}\cdot\mathbf{B}$ appears naturally according to the Dirac equation (in classical case we need to add this by hand anyway). `check the derivation`
+
+$$
+i\partial_t \varphi=
+\left[
+\frac{\mathbf{p}^2}{2m} - \frac{e}{2m}(\mathbf{L}+2\mathbf{S})\cdot\mathbf{B}
++ \frac{e^2}{2m}\mathbf{A}^2 = e\Phi
+\right]\varphi
+$$
+
+Magnetic moment $\mathbf{\mu}=\frac{e^2}{2m}(\mathbf{L}+2\mathbf{S})$.
+
+Lorentz transformation. Lorentz boost
+
+$$
+\begin{aligned}
+\mathbf{x} = A\mathbf{x}\quad
+\begin{bmatrix}
+    t'\\ z'
+\end{bmatrix}
+=
+\begin{bmatrix}
+    B_{11} & B_{12}\\
+    B_{21} & B_{22}
+\end{bmatrix}
+\begin{bmatrix}
+    t \\ z
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \gamma & -\beta\gamma\\
+    -\beta\gamma & \gamma
+\end{bmatrix}
+\begin{bmatrix}
+    t \\ z
+\end{bmatrix}
+\end{aligned}
+$$
+
+where $\gamma=1/\sqrt{1-v^2/c^2}$.
+Note that the Lorentz boost can be written in 
+
+$$
+\begin{bmatrix}
+    \gamma & -\beta\gamma\\
+    -\beta\gamma & \gamma
+\end{bmatrix} = 
+\begin{bmatrix}
+    \cosh\alpha & -\sinh\alpha\\
+    -\sinh\alpha & \cosh\alpha
+\end{bmatrix}
+$$
+
+Homogeneous Lorentz transformation: 3 rotations among spatial axes, 3 rotation between 1 spacial axis and time axis, overall 6 degrees of freedom. Inhomogeneous Lorentz transformations: 10 degrees of freedom. `check the number of DOF`
+
+$$
+\mathbf{x}^\mu = (t, x, y, z)\quad
+{\mathbf{x}'}^\mu = \Lambda^\mu_\nu\mathbf{x}^\nu
+$$
+
+$$
+\mathrm{d}t' = \gamma\mathrm{d}t - \beta\gamma\mathrm{d}z,\
+\mathrm{d}z' = \gamma\mathrm{d}z - \beta\gamma\mathrm{t}
+\Rightarrow
+\mathrm{d}z = \beta\mathrm{d}t,\
+\mathrm{d}t' = \gamma\mathrm{d}t - \beta^2\gamma\mathrm{d}t
+= \sqrt{1-\beta^2}\mathrm{d}t
+$$
+
+$$
+\mathrm{d}s^2 
+= \mathrm{d}x^\mu\mathrm{d}x_\mu
+= \mathrm{d}x'^\mu\mathrm{d}x'_\mu
+= \Lambda^\mu_\nu dx^\nu g_{\mu\rho}\Lambda^\rho_\sigma dx^\sigma
+\Rightarrow
+\Lambda^\mu_\nu g_{\mu\rho}\Lambda^\rho_\sigma = g_{\nu\sigma}
+$$
+
+Assume $\psi'(x')$ and $\psi(x)$ are related by a linear transformation
+
+$$
+\psi'(x') = S(\Lambda)\psi(x) = S(\Lambda)\psi(\Lambda^{-1}x')\\
+(-i\partial_\mu + m)\psi(x) = 0\Rightarrow
+(-i\partial_\mu' + m)\psi'(x') = 0
+$$
+
+$$
+\left(
+-i\gamma^\mu\frac{\partial}{\partial x^\mu} + m
+\right)\psi(x) 
+= \left(-i\gamma^\mu\frac{\partial}{\partial x'^\nu}
++ m
+\right)\psi(x)
+= \left(
+-i\gamma^\mu\Lambda^\nu_\mu\partial_\nu' + m 
+\right)S^{-1}(\Lambda)\psi'(x') = 0\\
+\Rightarrow
+-iS\gamma^\mu\Lambda_mu^\nu\partial_\nu' S^{-1}\psi'(x') + m\psi'(x')=0\quad
+S^{-1}\gamma^\nu S = \Lambda_\mu^\nu \gamma^\mu
+$$
+
+Example for a spinor (period $\theta=4\pi$).
+
+$$
+S(\Lambda) = 
+e^{-\frac{i}{4}\sigma_{\mu\nu}\omega^{\mu\nu}}\quad
+\psi'(x') = S(\Lambda)\psi(x)
+= (\cos(\theta/2) + i\sigma^{12}\sin(\theta/2))\psi(x)
+$$
+
+Derive the most basic form of solutions of Dirac's equation
+
+$$
+(-i\gamma^\mu\partial_\mu + m)\psi = 0
+$$
+
+In the rest frame
+
+$$
+\psi^+(x) = U_0 e^{-imt}\quad
+\psi^-(x) = V_0 e^{-imt}
+$$
+
+In the moving frame, $k^2=m^2$.
+
+$$
+\psi^+(x) = U(k)e^{-ikx}\quad
+\psi^-(x) = V(k)e^{ikx}
+$$
+
+$U$ and $V$ have to satisfy $(k'-m)U(k)= 0 $ and $(k'+m)V(k)=0$, $k'$ stands for $k$-slash.
+
+$$
+U(k) = (k' + m)U_0\quad
+V(k) = (k' - m)V_0
+$$
+
+$$
+U(k) = 
+\begin{bmatrix}
+    \sqrt{\frac{E+m}{2m}}\chi_\gamma\\
+    \frac{\sigma\cdot k}{\sqrt{2m(E+m)}}\chi_\gamma
+\end{bmatrix}
+$$
 
 
