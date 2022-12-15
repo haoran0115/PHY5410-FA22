@@ -1049,7 +1049,132 @@ U(k) =
 \begin{bmatrix}
     \sqrt{\frac{E+m}{2m}}\chi_\gamma\\
     \frac{\sigma\cdot k}{\sqrt{2m(E+m)}}\chi_\gamma
+\end{bmatrix}\quad
+V(k) = 
+\begin{bmatrix}
+    \frac{\sigma\cdot k}{\sqrt{2m(E+m)}}\chi_\gamma\\
+    \sqrt{\frac{E+m}{2m}}\chi_\gamma
 \end{bmatrix}
 $$
 
+Time evolution, start with a positive energy spinor
+
+$$
+\psi(t=0, x) \propto 
+e^{ip_0\cdot x-x^2/4x_0^2}\begin{bmatrix}
+    \varphi\\ 0
+\end{bmatrix}
+$$
+
+The general solution at time $t$ can be written as
+
+$$
+\psi(t, x) = 
+\int\frac{d^3}{(2\pi)^3}\sum_\gamma
+[
+    b(p, \gamma)U_\gamma (P)e^{-ip\cdot x} + 
+    d^*(p, \gamma)V_\gamma(p)e^{ip\cdot x}
+]
+$$
+
+where $b$ and $d^*$ are expansion parameters.
+
+Do Fourier transform `check textbook`
+
+Start from a positive energy state, time evolution will generate negative energy state. Dirac postulated that negative energy are fully occupied. `check Dirac sea`
+
+## Field theory
+
+Find a Lagrangian generating the correct EOM `(Lagrangian density?)`
+
+$$
+\mathcal{L} =\mathcal{L}(\phi_i(x), \partial_\mu\phi_i(x))
+$$
+
+No longer to be unitary, since the time evolution operator will have exponentially decay factor $e^{-iHt}\rightarrow e^{-i(H-i\delta)t}$.
+
+In non-relativistic case we have $[x_i,p_j]=i\delta_{ij}$.
+Define the conjugate momentum
+
+$$
+\pi_i = \frac{\partial \mathcal{L}}{\partial \dot{\phi}_i}
+$$
+
+Define the action
+
+$$
+S = \int d^4 x\ \mathcal{L}
+$$
+
+EOM is determined by requiring $\delta S=0$.
+
+$$
+\delta S 
+= 
+\int d^4 x
+\left[
+    \frac{\partial\mathcal{L}}{\partial\phi_i}\delta\phi_i
+    + \frac{\partial L}{\partial (\partial_\mu\phi_i)}\delta(\partial_\mu\phi_i)
+\right]
+= 
+\int d^4 x
+\left[
+    \frac{\partial\mathcal{L}}{\partial\phi_i}
+    - \partial_\mu\frac{\partial L}{\partial (\partial_\mu\phi_i)}
+\right]\delta\phi_i + \text{surface term}
+= 0
+$$
+
+Euler-Lagrange equation
+
+$$
+\frac{\partial\mathcal{L}}{\partial\phi_i}
+- \partial_\mu\frac{\partial L}{\partial (\partial_\mu\phi_i)}
+= 0
+$$
+
+Commutation relations
+
+$$
+[\phi_i(x, t), \pi_j(x', t)] = 
+i\delta_{ij}\delta(x-x')
+$$
+
+*Example.* A real scalar field
+
+$$
+\mathcal{L} = 
+\frac{1}{2}(\partial^\mu\phi\partial_\mu\phi - m^2\phi^2)\quad
+\frac{\partial\mathcal{L}}{\partial\phi} = -m^2\phi\quad
+\partial_\mu\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)} 
+= \partial^\mu\partial_\mu\phi
+$$
+
+EL equation becomes KG equation. $\pi=\dot{\phi}$.
+
+$$
+[\phi(x, t), \dot{\phi}(x', t)] = 
+i\delta(x-x')
+$$
+
+$$
+\phi(x) = 
+\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2k^0}}
+[a_ke^{-ik\cdot x} + a_k^\dagger e^{ik\cdot x}]
+$$
+
+$[a_k,a_{k'}^\dagger]=\delta_{kk'}$. Hence $\phi=\phi^\dagger$.
+
+How to calculate the correlation function $\braket{0|\phi(x)\phi(y)0}$?
+
+$$
+\braket{0|\phi(x)\phi(y)0} 
+= 
+\int_\mathbb{C}
+\frac{d^4 k}{(2\pi)^4}\frac{e^{-ik(x-y)}}{k^2-m^2}
+\sim
+\int\frac{d^3 k}{(2\pi)^3}\frac{1}{2k^0}e^{-ik(x-y)}
+$$
+
+Physical situation: positive-energy propagate forward in time. `check Feymann propagator`
 
