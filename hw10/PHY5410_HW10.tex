@@ -188,8 +188,8 @@ Let the solution be in the form
 In this case, we know that 
 \begin{align*}
     R_l(r) &= \frac{u_l(r)}{r} = \begin{cases}
-        A j_l(kr) & r < a\\
-        B j_l(kr+\delta_l) & r \geq a\text{ \hl{should not use the asymptotic form}}
+        j_l(kr) & r < a\\
+        B j_l(kr) + C n_l(kr) & r \geq a
     \end{cases}
 \end{align*}
 where $k=\sqrt{2mE/\hbar^2}$.
@@ -197,45 +197,27 @@ where $k=\sqrt{2mE/\hbar^2}$.
 \item By the continuity wrt $r$ and $p_r=-i\hbar(\partial_r + 1/r)$ of $R(r)$
 at $r=a$, we have
 \begin{align*}
-    Aj_l(ka) &= B j_l(ka+\delta_l)\\
+    j_l(ka) &= B j_l(ka) + C n_l(ka)\\
     \lim_{\epsilon\rightarrow 0}
     \int_{a-\epsilon}^{a+\epsilon} \d r\ H\psi(\mathbf{x}) &= 
     \lim_{\epsilon\rightarrow 0}
     \int_{a-\epsilon}^{a+\epsilon} \d r\ E\psi(\mathbf{x})\\
     \Rightarrow
-    \lambda Aj_l(ka) &= 
-    Akj_l'(ka) - Bkj_l'(ka+\delta_l)
+    \lambda j_l(ka) &= 
+    kj_l(ka) - Bk j_l'(ka) - Ck n_l'(ka)
 \end{align*}
-note that $j_l'$ does not denote the derivative but denotes the radial derivative
+note that $j_l'$ denotes the radial derivative but does not denote the derivative
 \begin{align*}
     j_l'(\varrho) &= \left[\frac{1}{\varrho}\frac{\d}{\d\varrho}\varrho\right] j_l(\varrho)
 \end{align*}
-Substituting $A/B = j_l(ka+\delta_l)/j_l(ka)$, we get an equation
+Hence we have the equation
 \begin{align*}
-    \lambda j_k(ka+\delta_l) &= 
-    kj_l(ka+\delta_l)\frac{j'_l(ka)}{j_l(ka)} - 
-    kj_l'(ka+\delta_l)\\
-    \Rightarrow
-    \frac{j_l'(ka+\delta_l)}{j_l(ka+\delta_l)} &= 
-    \frac{j_l'(ka)}{j_k(ka)} - \frac{\lambda}{k}
+    Bj_l(ka) + Cn_l(ka) &= j_l(ka)\\
+    Bj_l'(ka) + Cn_l'(ka) &= j_l'(ka) - \lambda j_l(ka)
 \end{align*}
-Assume the asymptotic solution applies here, where
+Hence we can get
 \begin{align*}
-    j_l(\varrho) &= \frac{1}{\varrho}\sin\left(\varrho - \frac{l\pi}{2}\right)\quad
-    j_l'(\varrho) = \frac{1}{\varrho}\cos\left(\varrho - \frac{l\pi}{2}\right)
-\end{align*}
-Hence 
-\begin{align*}
-    \cot (ka+\delta_l-l\pi/2) &= 
-    \cot (ka-l\pi/2) - \frac{\lambda}{k}\\
-    \Rightarrow
-    \delta_l &= \arctan\left[\frac{k}{k\cot (ka-l\pi/2) - \lambda}\right] 
-    - ka + \frac{l\pi}{2}
-\end{align*}
-if we define $\xi=ka$, $g=\lambda a$, then
-\begin{align*}
-    \delta_l &= \arctan\left[\frac{\xi}{\xi\cot (\xi-l\pi/2) - g}\right] 
-    - \xi + \frac{l\pi}{2}
+    B &= 
 \end{align*}
 
 \item For $l=0$ we have
